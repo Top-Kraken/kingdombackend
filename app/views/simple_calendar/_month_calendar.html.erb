@@ -15,21 +15,29 @@
     <div class="row justify-content-center calendar-sec1">
       <div class="col-12 col-md-3">
         <div class="blue_box">
-          <% @next_four_days1.each do |datetime, appointment| %>
+          <% if false %>
+          <% #@next_four_days1.each do |datetime, appointment| %>
             <% if appointment.present? %>
-              <span><%= date_translation datetime %>:</span>
-              <br>
+              <div class="dark_box"><div class="text"><div class="name"><%= date_translation datetime %></div>
               <% appointment.each do |apt| %>
                 <div>
-                  <%= link_to  demo_path(apt),{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#demo-modal", class: 'btn'} do  %>
-                    Demo With <%= "#{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}"%>
-                  <%end%>
+                  <p><%= link_to "Demo with #{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}", demo_path(apt) %>
+                  <a href="<%= "/demos/#{apt.id}/edit" %>"><%= image_tag("p-icon.png", alt: "#") %></a></p>
                 </div>
               <% end %>
+              <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag("three_dots2.png", alt: "#") %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div></div></div>
             <% end %>
           <% end %>
 
-          
           <% @next_four_days.each do |datetime, demos| %>
             <% if demos.present? %>
                 <div class="dark_box"><div class="text"><div class="name"><%= date_translation datetime %></div>
