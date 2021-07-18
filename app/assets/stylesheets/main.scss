@@ -1,0 +1,34 @@
+body, html{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	font-size: 16px;
+	font-family: 'Geometria' !important;
+
+	@media (min-width: 768px) {
+    display: table;
+    position: relative;
+  }
+}
+body {
+	ul, ol{
+		list-style: none;
+		padding:0;
+		margin:0;
+	}
+}
+input:focus, button:focus, textarea:focus,select:focus{
+	outline: 0;
+	box-shadow: none
+}
+body {
+    div {
+        a,a:hover,a:focus{
+        	text-decoration: none;
+        }
+
+    }
+}
+img{
+	max-width: 100%;
+}

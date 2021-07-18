@@ -1,0 +1,38 @@
+<%= form_with(model: demo) do |form| %>
+  <% if demo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(demo.errors.count, "error") %> prohibited this demo from being saved:</h2>
+
+      <ul>
+        <% demo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <label>Required</label>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :user_id, class: 'form-control', placeholder: 'User' %>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :lead_id, class: 'form-control', placeholder: 'Lead' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12">
+      <%= form.datetime_select :start_datetime, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-12 p-0">
+    <button type="submit" class="btn_red"><span><%= image_tag('plus1.png', alt: "#") %> Create Demo</span></button>
+    <a href="/demos" class="btn_purple"><span>Back</span></a>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<header class="landing-layout <%= "layout-header" unless  controller.controller_name == "static" %>">
+  <div class="logo">
+    <a href="#">
+      <%= image_tag("DEUS-logo-blue.png") %>
+    </a>
+  </div>
+  <div class="contact-us" style="display: none;">
+    <a href="#" class="btn">
+      <span>Contact Us</span><br>
+      <span><%#= @user.twilio_number%></span>
+    </a>
+  </div>
+</header>

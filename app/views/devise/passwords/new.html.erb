@@ -1,0 +1,25 @@
+
+<section class="form_section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'phone-number-form' }) do |f| %>
+          <h4>Forgot Password</h4>
+          <div class="form-group">
+            <%= f.phone_field :phone_number, autocomplete: "phone", placeholder: 'Phone', class: 'form-control phone-number-field', required: true %>
+            <span class="number-error-msg hide"></span>
+          </div>
+          <a href="#" class="contact_support">Contact Support</a>
+          <div class="text-center">
+            <button class="btn_red">
+              <span>NEXT</span>
+            </button>
+          </div>
+          <p>Already have an account? <%= link_to "Sign in", new_user_session_path %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,14 @@
+<div id="home-page-top-section" class="row pt-5">
+  <div class="col-md-12 d-md-flex d-block justify-content-between">
+    <div class="logo-div">
+      <a href="/" class="logo">
+        <%=image_tag("kingdom-logo.svg", class: "logo-image", alt: "#") %>
+      </a>
+    </div>
+
+    <div class="signup-singin-links-div text-center">
+      <%= link_to("SIGN IN", new_user_session_path, class: "signup-signin-links btn_red") %>
+      <%= link_to("SIGN UP", new_user_registration_path, class: "signup-signin-links btn_purple") %>
+    </div>
+  </div>
+</div>

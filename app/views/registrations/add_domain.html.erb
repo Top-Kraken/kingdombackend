@@ -1,0 +1,12 @@
+<h1>Domain</h1>
+<h4>Add a new Domain</h4>
+
+<%= form_for("registration", url: registrations_search_domain_path, remote: true) do |form| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>  
+  <div class="field">
+    <%= form.label :search, 'Add a new domain' %>
+    <%= form.text_field :search, placeholder: 'Search for a New Domain' %>
+  	<%= form.submit "Search", class: 'search_keywords' %>
+  </div>
+<% end %>
+<div id="domains_div"></div>

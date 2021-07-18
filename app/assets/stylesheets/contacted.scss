@@ -1,0 +1,267 @@
+
+
+/* section 2 */
+.sct2 {
+  margin-top: 70px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.sct2 .video {
+  width: 700px;
+  height: 400px;
+  background-color: gray;
+  margin: 10px auto;
+}
+
+.img img {
+  width: inherit;
+}
+
+.sct2 .btn {
+  padding: 20px 10px;
+  margin: 20px auto;
+  background-color: #008FBE;
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.sct2 .container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sct2 .container-card .card {
+  display: flex;
+  justify-content: center;
+  margin: 20px 5px;
+  text-align: left;
+  width: 48%;
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(143, 143, 143, 0.548);
+}
+
+.sct2 .container-card .card .img {
+  margin: 0 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.sct2 .container-card .card .img img {
+  width: inherit;
+  height: auto;
+}
+
+.sct2 .container-card .card .text {
+  width: 80%;
+}
+
+.sct2 .container-card .card p strong {
+  font-family: 'Geometria Extra Bold';
+  font-size: 21px;
+  line-height: 2.5;
+}
+
+/* section 3 */
+.sct3 {
+  text-align: center;
+  padding: 10px;
+}
+
+.sct3 > h2 {
+  font-size: 32px;
+  font-family: 'Geometria Heavy';
+}
+
+.sct3 > h3, .sct3 > h5 {
+  font-size: 21px;
+  margin-bottom: 40px;
+}
+
+.sct3 > h4 {
+  font-size: 32px;
+  font-family: 'Geometria Light';
+}
+
+.sct3 > p {
+  font-size: 21px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.sct3 .container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sct3 .container-card .card{
+  margin: 10px 20px;
+  width: 45%;
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(143, 143, 143, 0.548);
+}
+
+.sct3 .container-card .card h3 {
+  font-size: 21px;
+  font-family: 'Geometria Heavy';
+}
+
+.sct3 .container-card .card .img {
+  width: 300px;
+  height: auto;
+  margin: 15px auto;
+}
+
+.sct3 .container-card .card .img img {
+  width: inherit;
+  opacity: 1;
+}
+
+.sct3 .container-card .card h4 {
+  font-family: 'Geometria Extra Bold';
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.sct3 .container-card .card p {
+  font-size: 14px;
+  text-align: left;
+  margin-left: 10px;
+  line-height: 2.0;
+}
+
+.sct3 .btn {
+  padding: 20px 10px;
+  margin: 20px auto;
+  background-color: #008FBE;
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.sct3 .video {
+  width: 700px;
+  height: 400px;
+  background-color: gray;
+  margin: 10px auto;
+}
+
+.sct4 {
+  padding: 20px;
+  text-align: center;
+}
+
+.sct4 h2 {
+  font-family: 'Geometria Bold';
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sct4 h3 {
+  font-size: 21px;
+}
+
+.sct4 p {
+  font-family: 'Geometria Bold';
+  margin-top: 5px;
+  text-align: left;
+}
+
+.sct4 ul {
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 0 10px;
+  list-style-image: url(images/icon-ok.png);
+  list-style-position:initial;
+  text-align: left;
+}
+
+.sct4 .ok {
+  list-style-image: url(images/icon-ok.png);
+}
+
+
+.sct4 .btn {
+  padding: 20px 10px;
+  margin: 20px auto;
+  background-color: #008FBE;
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+
+@media (max-width: 928px) {
+  /* section 2 */
+  .sct2 {
+    padding: 20px 10px 0;
+  }
+
+  .sct2 .container-card .card {
+    width: 95%;
+  }
+
+  /* section 3 */
+  .sct3 {
+    padding: 20px 10px;
+  }
+
+  .sct3 .container-card .card{
+    margin: 10px 20px;
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 769px) {
+  .sct3 .video, .sct2 .video {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 643px) {
+  /* section 2 */
+  .sct2 .container-card .card .img {
+    margin: 0 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: lightblue;
+  }
+
+  /* section 3 */
+  .sct3 .video, .sct2 .video {
+    width: 300px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 400px) {  
+  /* section 3 */
+  .sct3 .container-card .card .img {
+    width: 200px;
+    margin: 15px auto;
+  }
+
+  .sct4 ul {
+    display: block;
+  }
+}

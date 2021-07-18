@@ -1,0 +1,77 @@
+<% if false %>
+  <%= form_with(model: @lead, local: false, html: { class: 'phone-number-form' }) do |form| %>
+    <div class="flex flex-">
+      <div class="form-group mb-2">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group mb-2">
+        <%= form.label :phone_number %>
+        <%= form.text_field :phone_number, class: 'form-control phone-number-field', placeholder: 'phone number' %>
+        <span class="number-error-msg hide"></span>
+      </div>
+      </div>
+      <div>
+        <div class="form-group mb-2">
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group mb-2">
+          <%= form.label :facebook %>
+          <%= form.text_field :facebook, class: 'form-control' %>
+        </div>
+
+        <div class="form-group mb-2">
+          <%= form.label :instagram %>
+          <%= form.text_field :instagram, class: 'form-control' %>
+        </div>
+
+        <div class="form-group mb-2">
+          <%= form.label :linkedin %>
+          <%= form.text_field :linkedin, class: 'form-control' %>
+        </div>
+      </div>
+      <%= form.submit %>
+    <span id="helpBlock" class="help-block"></span>
+  <% end %>
+<% end %>
+
+<span class="number-error-msg" id="helpBlock"></span>
+
+<%= form_with(model: @lead, local: false, html: { class: 'phone-number-form' }) do |form| %>
+  <label>Required</label>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :phone_number, class: 'form-control phone-number-field', placeholder: 'Phone Number' %>
+        <span class="number-error-msg hide"></span>
+      </div>
+    </div>
+  </div>
+  <label>Optional</label>
+  <div class="form-group">
+    <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :facebook, class: 'form-control social', placeholder: 'Facebook profile link' %>
+    <%= image_tag("facebook-icon.png", alt: "#", class: "social_img") %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :instagram, class: 'form-control social', placeholder: 'Instagram profile link' %>
+    <%= image_tag("instagram-icon.png", alt: "#", class: "social_img") %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :linkedin, class: 'form-control social', placeholder: 'Linkedin profile link' %>
+    <%= image_tag("linkedin-icon.png", alt: "#", class: "social_img") %>
+  </div>
+  <div class="text-right">
+    <a href="/leads" class="btn_red btn_red2 me-2"><span>Cancel</span></a>
+    <button type="submit" class="btn_red"><span>Submit</span></button>
+  </div>
+<% end %>

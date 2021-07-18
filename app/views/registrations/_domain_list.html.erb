@@ -1,0 +1,18 @@
+<% @domains&.each do |domain| %>
+  <%= form_for("account", url: registrations_select_domain_path) do |form| %>
+    <div class="row">
+      <div class="col-8">
+        <div class="form-group">
+          <%= text_field_tag :domain, domain, class: 'form-control disabled_field', readonly: true %>
+        </div>
+      </div>
+      <div class="col-4">
+        <%= form.submit "Select", class: 'btn_blue' %>
+      </div>
+    </div>
+    <div class="field">
+    </div>
+    <div class="domains_div"></div>
+  <% end %>
+<% end %>
+<%= "Unable to find domains" unless @domains.present?%>

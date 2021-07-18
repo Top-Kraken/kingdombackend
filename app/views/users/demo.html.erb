@@ -1,0 +1,16 @@
+<h1 style="font-family: 'Geometria Heavy'">Don’t Forget Your Demo Today!</h1>
+<h2 style="font-weight: bold;">Show Up It’s Only 10 Mins.</h2>
+<div class="img">
+   <%= image_tag("demo/Photo1.jpg") %>
+</div>
+<h4 class="mb-0" style="font-size: 1rem; font-weight: bold;">Change Your Life</h4>
+<br>
+<hr>
+<h2 style="font-weight: bold;">You Know You Have Time</h2>
+<div class="img">
+   <%= image_tag("demo/Photo2.jpg") %>
+</div>
+<a class="btn" href="<%= "#{Rails.application.credentials.base_url}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}" %>">
+<small style="font-weight: 200;">You're Going To Be Mad</small><br>
+At Yourself If You Miss This!
+</a>

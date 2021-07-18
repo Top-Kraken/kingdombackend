@@ -1,0 +1,14 @@
+@import "phone-number-library";
+@import "main";
+@import "fonts";
+@import "style";
+@import "responsive-style";
+
+
+.iti__selected-flag {
+  background: #eee !important;
+  border-radius: 9px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  width: 75px;
+}

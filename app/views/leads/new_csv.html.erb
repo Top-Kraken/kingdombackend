@@ -1,0 +1,30 @@
+<section class="main_section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-5">
+					<div class="row">
+						<div class="col-6">
+							<h4 class="mb-5">New Leads</h4>
+						</div>
+						<div class="col-6">
+							<ul class="list-inline top_select">
+								<li class="list-inline-item"><a href="/leads/new">One Person</a></li>
+								<li class="list-inline-item"><a href="#" class="active">CSV Upload</a></li>
+							</ul>
+						</div>
+					</div>
+					<form method="post" class="text-center">
+            <%= image_tag("document-icon.svg", alt: "#", class: "document") %>
+						<div class="upload-btn-wrapper">
+						  	<button class="btn_purple"><span><%= image_tag("add-leads-button-icon.svg", alt: "#") %> Upload CSV</span></button>
+						  	<input type="file" name="myfile" />
+						</div>
+						<p>The CSV should be formatted to have a <br>“name” and “number” column</p>
+						<div class="text-center mt-5">
+							<a href="/leads" class="btn_red"><span>Cancel</span></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>

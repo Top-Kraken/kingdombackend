@@ -1,0 +1,96 @@
+<section class="main_section calendar-set-sec">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-12">
+        <%= simple_form_for current_user, url: user_path(current_user), method: :put, html: { class: "row justify-content-center calendar-set-head" } do |f| %>
+					<div class="col-12 d-flex justify-content-between align-items-center p-0">
+						<h4>
+							<%= link_to demos_path do %>
+								<%= image_tag('back-icon.png', alt: "#") %>
+							<% end %>
+
+							Calendar Settings
+						</h4>
+					</div>
+					<div class="col-12">
+						<h4>Zoom Demo Link</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group">
+              <%= f.input :zoom_link, label: false, placeholder: "Enter your personal meeting zoom link", input_html: { type: 'url' }, wrapper: false, required: true %>
+						</div>
+					</div>
+					<div class="col-12">
+						<h4>Account Phone Number</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group">
+              <%= f.input :phone_number, label: false, placeholder: "Enter your personal phone number", wrapper: false, required: true %>
+						</div>
+					</div>
+					<div class="col-12">
+						<h4>Twilio Number</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group">
+              				<%= f.input :twilio_number, label: false, placeholder: "twilio number", wrapper: false, required: false, readonly: true %>
+						</div>
+					</div>
+					<div class="col-12">
+						<h4>Landing Page Link</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group">
+              <%= f.input :domain, label: false, placeholder: "Enter your personal landing page link", wrapper: false, required: true %>
+						</div>
+					</div>
+					<div class="col-12">
+						<h4>Personal Sign Up Link</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group">
+							<input type="text" name="" value="http://nowkingdom.com/users/sign_up?at=<%= current_user.affiliate_token %>" readonly="readonly">
+						</div>
+					</div>
+        <% end %>
+        <%= simple_form_for Availability.new, html: { class: "row justify-content-center calendar-set-head" } do |f| %>
+
+          <% if @availabilities.present? %>
+            <div class="col-12">
+              <h4>Availability</h4>
+              <% @availabilities.each do |availability| %>
+                <p>
+                  <%= availability.duration %>
+                  <%= link_to availability, method: :delete, data: { confirm: 'Are you sure?', remote: true } do %>
+                    <%= image_tag('minus.png', alt: "#") %>
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
+
+					<div class="col-12">
+						<h4>Standard Work Hours</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group d-flex justify-content-between">
+              <%= f.input :start_time, collection: time_range, prompt: 'Select Start Time', label: false, wrapper: false %>
+              <%= f.input :end_time, collection: time_range, prompt: 'Select End Time', label: false, wrapper: false %>
+						</div>
+					</div>
+					<div class="col-12">
+						<h4>Day of the Week</h4>
+					</div>
+					<div class="col-12 p-0">
+						<div class="input-group d-flex">
+							<%= f.input :day_of_week, collection: Date::DAYNAMES, prompt: 'Select Work Day', label: false, wrapper: false %>
+						</div>
+					</div>
+					<div class="col-12 p-0">
+						<button type="submit"><%= image_tag('plus1.png', alt: "#") %> Add</button>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</section>

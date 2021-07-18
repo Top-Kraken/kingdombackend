@@ -1,0 +1,243 @@
+.visible-xs{
+	display: none !important;
+}
+.hidden-xs{
+	display: block !important;
+}
+@media(max-width: 767px){
+	.visible-xs{
+		display: block !important;
+	}
+	.hidden-xs{
+		display: none !important;
+	}
+}
+@media(max-width: 1440px){
+	html,body{
+		font-size: 14px;
+	}
+}
+@media(max-width: 1366px){
+	html,body{
+		font-size: 13px;
+	}
+}
+@media(max-width: 1280px){
+	html,body{
+		font-size: 12px;
+	}
+}
+@media(max-width: 1024px){
+	html,body{
+		font-size: 10px;
+	}
+}
+@media(max-width: 991px){
+	.form_section form .start_box .img_box{
+		height: 13rem;
+	}
+	.main_section .table_box .bot_data .bot_row .td .btn_tab{
+		padding: .45rem 1rem;
+	}
+	html,body{
+		font-size: 9px;
+	}
+}
+@media(max-width: 767px){
+	html,body{
+		font-size: 14px;
+	}
+	.home_bg{
+	    background-image: image_url("home_mob_bg.png");
+	    background-position: bottom;
+	}
+	.form_bg{
+	    background-image: image_url("section_mob_bg.png");
+	    background-position: bottom;
+	}
+	.add_bg{
+	    background-image: image_url("add_mob_bg.png");
+	    background-position: bottom;
+	}
+	.logo_section .logo{
+	    display: block;
+	    margin: auto;
+	    margin-bottom: 2rem;
+	}
+	.logo_section ul{
+	    text-align: center;
+	}
+	.form_bg .logo_section{
+		display: none;
+	}
+	.content_section .flexer{
+		padding: 0 1rem;
+	}
+	.content_section h1{
+		font-size: 2.75rem;
+		line-height: 1.25;
+	}
+	.content_section .home_right{
+	    margin-bottom: 3rem;
+	    margin-top: 3rem;
+	}
+	.form_section{
+		min-height: calc(100vh - 14rem);
+	}
+	.form_section form h4{
+		margin-bottom: 2rem;
+		font-size: 2rem;
+	}
+	.form_section form p.mb-5{
+		margin-top: 2.5rem;
+	}
+	.form_section form .btn_text{
+	    text-align: center;
+	}
+	.form_section form .btn_text .btn_red{
+	    display: block;
+	    margin: auto;
+	    margin-top: 1rem;
+	    min-width: 10rem;
+	}
+	.form_section form .btn_text .btn_red.hide{
+		display: none;
+	}
+	.logo_section2{
+	    padding: 1.5rem 0;
+	}
+	.logo_section2 .col-12.col-md-6{
+	    display: none;
+	}
+	.logo_section2 .logo{
+	    display: none;
+	}
+	.logo_section ul.text-right li a span,.logo_section ul.text-right li.dropdown a .down_icon{
+	    display: none;
+	}
+	.logo_section .open_nav{
+		display: inline-block;
+	}
+	.main_section{
+		min-height: 100vh;
+	}
+	.main_section .top_select li{
+	    display: block;
+	    margin: 0;
+	    margin-bottom: .5rem;
+	}
+	.lead_view_flex{
+	    -webkit-flex-flow: row wrap;
+	    flex-flow: row wrap;
+	}
+	.lead_view_flex h4{
+	    width: 100%;
+	    text-align: center;
+	    margin-bottom: 1rem;
+	}
+	.blue_box .message_wrap{
+	    padding: 0;
+	}
+	.main_section .blue_box2{
+	    margin-top: 1.5rem;
+	    border: 0;
+	    background: transparent;
+	    padding: 0;
+	}
+	.main_section .blue_box2 .dark_box{
+	    padding: 1rem;
+	}
+	.calendar-sec1-head .justify-content-between{
+		flex-direction: column;
+	}
+	.calendar-sec1-head .justify-content-between div{
+		width: 100%
+	}
+	.calendar-sec1-head button{
+		width: calc(33.333% - .6rem);
+	}
+	.calendar-sec1-head h4{
+		display: flex;
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+	.calendar-sec1-head h4 img{
+		width: 2.5rem;
+		margin-right: 1.2rem;
+	}
+	.calendar-sec1-head{
+		margin-bottom: 1.5rem;
+	}
+	.calendar-sec1 .blue_box{
+		display: flex;
+		flex-direction: column;
+		min-height: initial;
+	}
+	.calendar-sec1 .blue_box .dark_box{
+		float: left;
+		width:  100%
+	}
+	.calendar-sec1 .blue_box .dark_box:last-child{
+		margin-bottom: 0;
+	}
+	.calendar_bg{
+    background-image: image-url('m-calendar-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+}
+.calendar-table-data table td{
+border:0 !important;
+}
+.calendar-table-data table thead td{
+min-height: inherit;
+padding-bottom: 1rem;
+}
+.calendar-table-data table td .circle-data{
+background-color: #25255f;
+display: inline-block;
+width: 1.7rem;
+height: 1.7rem;
+border-radius: 50%;
+text-align: center;
+line-height: 1.7rem;
+color: #c2b8d9;
+}
+.calendar-table-data table tbody td div:nth-child(1){
+width: 3.5rem
+}
+.calendar-table-data table tbody td div:nth-child(2){
+border-top: 1px solid #7d78a9;
+width: 100%;
+margin-top: .5rem;
+position: relative;
+}
+.calendar-table-data table tbody td{
+width: 100%;
+}
+.calendar-table-data table tbody td p{
+width: initial;
+float: left;
+min-width: 8rem;
+font-size: .6rem;
+}
+.calendar-table-data table tbody td .h-date-data{
+top:0;
+border-radius: .4rem;
+padding-top: .2rem;
+position: absolute;
+bottom: -2rem;
+z-index:1;
+}
+.modal-dialog{
+	width: 100% !important;
+	margin: auto !important;
+}
+.modal{
+	padding-right: 0 !important;
+}
+.calendar-set-sec{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+}

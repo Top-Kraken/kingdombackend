@@ -1,0 +1,22 @@
+<div class="modal fade" id="book_demo" aria-hidden="true" aria-labelledby="book_demo" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book a demo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_for :appointment, url: appointments_path, html: { remote: true, method: :post, id: "availability_form" } do |form| %>
+         <div class="appointment_errors"></div>
+         <div class="form-group py-4">
+            <label class="mb-2">Select a time</label>
+            <%= select_tag :availability_id, options_for_select(@availabilitie_times.map{|u|[u[0], u[1]] }), { prompt: "Select a date and time", class: 'form-control picker-services', required: true } %>
+         </div>
+         <%= form.hidden_field :lead_id , class: 'customer_id', value: @lead.id%>
+         <%= form.hidden_field :user_id , class: 'customer_id', value: @user.id%>
+         <button class="button" type="submit">Create a demo</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

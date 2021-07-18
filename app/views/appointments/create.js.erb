@@ -1,0 +1,15 @@
+
+<% if @appointment.errors.any? %>
+	$('.appointment_errors').html("<%= @appointment.errors.full_messages.join(',') %>");
+<%else%>
+	$('.appointment_errors').html("Appointment Successfully created!");
+	$('#availability_form')[0].reset();
+	$('#availability-picker').prop("selectedIndex",0)
+<%end%>
+
+setTimeout(function(){
+   $("#book_demo .btn-close").click();
+	// location.reload();
+   $(window.location.replace("<%= lead_demo_path(@appointment.user_id, @lead.phone_number)%>"))
+}, 1000);
+

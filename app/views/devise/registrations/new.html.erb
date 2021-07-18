@@ -1,0 +1,42 @@
+
+<section class="form_section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-4">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'phone-number-form' }) do |f| %>
+            <h4>Sign Up</h4>
+            <div class="form-group">
+              <% if @referred.present? %>
+                <%= hidden_field_tag :referred_by_id, @referred.try(:id) %>
+              <%end%>
+              <%= f.text_field :full_name, value: @lead.try(:full_name), autofocus: true, autocomplete: "name", placeholder: 'Name', class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.phone_field :phone_number, value: @lead.try(:phone_number), autocomplete: "phone", placeholder: 'Phone', class: 'form-control phone-number-field', required: true %>
+              <span class="number-error-msg hide"></span>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password (10 digit)', class: 'form-control', required: true  %>
+              <a href="#" class="input_icon">
+                <%=image_tag("lock-icon.png", alt: "Lock") %>
+              </a>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Re-enter password', class: 'form-control pswrd', required: true  %>
+              <a href="#" class="input_icon">
+                <%=image_tag("lock-icon.png", alt: "Lock") %>
+              </a>
+            </div>
+            <div class="text-center">
+              <%= f.button type: 'submit' , class: 'btn_red' do %>
+                <span>NEXT</span>
+              <% end %>
+            </div>
+            <p>Already have an account? 
+              <%= link_to "Sign in", new_session_path(resource_name) %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>

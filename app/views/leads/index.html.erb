@@ -1,0 +1,86 @@
+<section class="main_section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8">
+				<h4>Add Leads</h4>
+				<p>Don’t worry. You can add more later.</p>
+				<div class="hidden-xs">
+					<div class="table_box">
+						<div class="top_head">
+							<div class="th">Name</div>
+							<div class="th">Phone</div>
+							<div class="th">Actions
+								<div class="dropdown">
+								  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								    <%= image_tag("three_dots.png", alt: "#") %>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								    <li><a class="dropdown-item" href="#">Action</a></li>
+								    <li><a class="dropdown-item" href="#">Another action</a></li>
+								    <li><a class="dropdown-item" href="#">Something else here</a></li>
+								  </ul>
+								</div>
+							</div>
+						</div>
+						<div id="leads-container" class="bot_data">
+              <%= render 'leads' , remote: true %>
+						</div>
+					</div>
+				</div>
+				<div class="visible-xs">
+					<div class="table_mob">
+						<div class="dropdown">
+						  <button class="btn_drop dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						    Sort by Name <%= image_tag("dropdown-icon.svg", alt: "#") %>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						    <li><a class="dropdown-item" href="#">Sort by Name</a></li>
+						    <li><a class="dropdown-item" href="#">Sort by Name</a></li>
+						    <li><a class="dropdown-item" href="#">Sort by Name</a></li>
+						  </ul>
+						</div>
+            <div id="leads-container">
+              <%= render 'mobile_leads' , remote: true %>
+            </div>
+					</div>
+				</div>
+				<div class="text-right">
+          <%= link_to new_lead_path, class: 'btn_red' do %>
+            <span><%= image_tag("add-leads-button-icon.svg", alt: "#") %> Add Leads</span>
+          <% end %>
+					<button class="btn_purple"><span>Finish</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="modal fade" id="exampleModalToggleNew" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNew" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Import CSV</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: leads_import_path, local: false  do |form|%>
+          <%= form.file_field :file %>
+          <%= submit_tag "Import" %>
+          <span id="something" class="help-block"></span>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to 'Finish', leads_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'leads' %>

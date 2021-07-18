@@ -1,0 +1,160 @@
+<% if false %>
+<div class="pipeline-view-page-container ps-5">
+  <div class="tabs d-flex justify-content-center">
+    <div class="leads-tab p-1 me-2">Lead View</div>
+    <div class="pipeline-view-tab p-1 ms-2">Pipeline View</div>
+  </div>
+
+  <div class="search-bar">
+    <%= form_with url: pipeline_view_path, method: :get do |form| %>
+      <%= form.text_field :query, value: params[:query], placeholder: 'Search' %>
+    <% end %>
+  </div>
+
+  <main class="pipeline-view-content">
+    <div class="stages d-flex justify-content-start">
+      <% Lead.stages.keys.each do |stage_name| %>
+        <div class="stage me-3 mt-2">
+          <div class="title">
+            <%= stage_name %>
+          </div>
+          <div class="stage-content dropzone d-flex flex-column p-2 mt-2" data-stage-name="<%= stage_name %>">
+            <% @leads.try(stage_name).each do |lead| %>
+              <div class="lead draggable p-2 mb-3" data-lead-id="<%= lead.id %>">
+                <span class="name">
+                  <%= lead.full_name %>
+                </span>
+                <span class="heat p-1">
+                  <%= lead.heat %>
+                </span>
+                <div class="phone">
+                  <%= lead.phone_number %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </main>
+  
+  <div id="leadModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  </div>
+</div>
+<% else %>
+
+<section class="main_section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-12">
+				<ul class="list-inline main_view">
+					<li class="list-inline-item"><a href="/lead_view" class="btn_red"><span>Lead View</span></a></li>
+					<li class="list-inline-item"><a href="" class="btn_purple active"><span>Pipeline View</span></a></li>
+				</ul>
+				<div class="row justify-content-center">
+					<div class="col-12 col-md-5">
+						<div class="form-group group_lg2">
+              <%= form_with url: pipeline_view_path, method: :get do |form| %>
+                <%= form.text_field :query, value: params[:query], placeholder: 'Search', class: "search form-control" %>
+                <%= form.submit "", class: 'search_icon' %>
+              <% end %>
+						</div>
+					</div>
+				</div>
+				<div class="hidden-xs">
+					<div class="row justify-content-center">
+            <% Lead.stages.keys.each do |stage_name| %>
+              <div class="col">
+  							<label class="label text-capitalize"><%= stage_name %></label>
+  							<div class="blue_box blue_box2 dropzone" data-stage-name="<%= stage_name %>">
+                  <% @leads.try(stage_name).each do |lead| %>
+    								<div class="dark_box draggable" data-lead-id="<%= lead.id %>">
+    									<div class="text">
+    										<div class="name">
+                          <%= lead.full_name %>
+
+                          <% if lead.heat == "warm" %>
+                            <span class="type yellow">WARM</span>
+                          <% elsif lead.heat == "hot" %>
+                            <span class="type red">HOT</span>
+                          <% else %>
+                            <span class="type blue">COLD</span>
+                          <% end %>
+                        </div>
+    										<a href="#" class="tele"><%= lead.phone_number %></a>
+    										<div class="dropdown">
+    										  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <%= image_tag("three_dots2.png", alt: "#") %>
+    										  </button>
+    										  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    										    <li><a class="dropdown-item" href="#">Action</a></li>
+    										    <li><a class="dropdown-item" href="#">Another action</a></li>
+    										    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    										  </ul>
+    										</div>
+    									</div>
+    								</div>
+                  <% end %>
+  							</div>
+  						</div>
+            <% end %>
+					</div>
+				</div>
+				<div class="visible-xs">
+					<div class="table_mob">
+						<div class="dropdown">
+						  <button class="btn_drop dropdown-toggle text-capitalize" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="mobile-lead-stage-selected-name">All</span>
+						     <%= image_tag("dropdown-icon.svg", alt: "#") %>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item text-capitalize mobile-lead-stage-select-link" href="" data-stage="all">All</a></li>
+                <% Lead.stages.keys.each do |stage_name| %>
+                  <li><a class="dropdown-item text-capitalize mobile-lead-stage-select-link" href="" data-stage="<%= stage_name %>"><%= stage_name %></a></li>
+                <% end %>
+						  </ul>
+						</div>
+						<div class="blue_box blue_box2">
+              <% Lead.stages.keys.each do |stage_name| %>
+                <% @leads.try(stage_name).each do |lead| %>
+                  <div class="dark_box mobile-lead-stage-lead-item active draggable" data-stage="<%= stage_name %>">
+    								<div class="text">
+    									<div class="name">
+                        <%= lead.full_name %>
+                        <% if lead.heat == "warm" %>
+                          <span class="type yellow">WARM</span>
+                        <% elsif lead.heat == "hot" %>
+                          <span class="type red">HOT</span>
+                        <% else %>
+                          <span class="type blue">COLD</span>
+                        <% end %>
+                      </div>
+    									<a href="#" class="tele"><%= lead.phone_number %></a>
+    									<div class="dropdown">
+    									  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    									    <%= image_tag("three_dots2.png", alt: "#") %>
+    									  </button>
+    									  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    									    <li><a class="dropdown-item" href="#">Action</a></li>
+    									    <li><a class="dropdown-item" href="#">Another action</a></li>
+    									    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    									  </ul>
+    									</div>
+    								</div>
+    							</div>
+                <% end %>
+              <% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%= javascript_pack_tag 'pipeline' %>
+<%= javascript_include_tag '/pipeline.js' %>
+
+<% end %>

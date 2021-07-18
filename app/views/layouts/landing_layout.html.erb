@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Passive Income Now</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= favicon_link_tag asset_path('DEUS-logo-blue.png') %>
+  <%= stylesheet_link_tag 'landing', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'landing', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <%= render 'shared/prospect_layout_header'%>
+  <%= yield %>
+</body>
+</html>

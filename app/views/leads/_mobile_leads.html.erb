@@ -1,0 +1,34 @@
+<% @leads.each do |l| %>
+    <div class="tab_flex">
+      <div>
+        <div class="td"><%= l.first_name %></div>
+        <div class="td"><a href="#"><%= image_tag("phone-icon.svg", alt: "#") %> <%= l.phone_number %></a></div>
+      </div>
+      <div>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <%= link_to edit_lead_path(l.id), class: 'btn_tab' do %>
+              <%= image_tag("edit-button-icon.svg", alt: "#") %>
+            <% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to lead_path(l.id), class: 'btn_tab', method: :delete do %>
+              <%= image_tag("remove-button-icon.svg", alt: "#") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="modal fade" id="exampleModalToggleMobile" aria-hidden="true" aria-labelledby="exampleModalToggle" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+  
+        <div id="modal-content-edit">
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

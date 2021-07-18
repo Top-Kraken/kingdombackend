@@ -1,0 +1,72 @@
+<% if false %>
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Demo', new_demo_path %>
+<%= link_to 'Settings', demo_settings_path %>
+
+<br>
+<br>
+
+<div class="row">
+
+  <div class="col-2">
+    <% @next_four_days.each do |datetime, demos| %>
+      <% if demos.present? %>
+        <span><%= date_translation datetime %>:</span>
+        <br>
+        <% demos.each do |demo| %>
+          <div>
+            <%= link_to "Demo with #{demo.lead.first_name} #{demo.start_datetime.strftime('%l:%M %P')}", demo_path(demo), remote: true %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-10">
+    <%= month_calendar(events: @demos, attribute: :start_datetime) do |date, demos| %>
+      <%= date.day %>
+
+      <% demos.each do |demo| %>
+        <div>
+          <%= link_to demo.duration, demo_path(demo), remote: true %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+<div id="demo-show"></div>
+<% else %>
+
+<section class="main_section calendar-main-sec">
+		<div class="container">
+			<div class="row justify-content-center">
+        <%= month_calendar(events: @appointments, attribute: :start_time) do |date, demos| %>
+          <%= date %>
+        <% end %>
+			</div>
+		</div>
+	</section>
+
+	<!-- Modal -->
+<div class="modal fade calendar-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog h-100 d-flex justify-content-center align-items-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <%= image_tag("cross.png", alt: "#") %>
+        </button>
+      </div>
+      <div class="modal-body">
+	    <h1>Demo on Tuesday June 16, 2021</h1>
+	    <h5>with Jack</h5>
+        <a href="#"><button type="button">Send Demo Link Again</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% end  %>

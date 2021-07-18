@@ -1,0 +1,29 @@
+/*
+*= require intl-tel-input/build/css/intlTelInput.css
+*/
+
+@import 'intl-tel-input/build/css/intlTelInput.css';
+
+.iti__flag {background-image: image_url("intl-tel-input/build/img/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .iti__flag {background-image: image_url("intl-tel-input/build/img/flags@2x.png");}
+}
+
+.iti {
+  display: block !important;
+}
+
+.phone-number-field {
+    padding-left: 83px !important;
+}
+.number-error-msg {
+    color: red;
+    margin-left: 4px;
+    display: flex;
+    text-align: left;
+}
+
+.iti--allow-dropdown .error {
+  border: 1px solid #dc3545 !important;
+}

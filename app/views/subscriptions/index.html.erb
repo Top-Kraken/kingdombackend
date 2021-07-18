@@ -1,0 +1,24 @@
+<h1 class="text-danger">Get Started</h1>
+<p>195.99 for the first month and then 175.99 every month after</p>
+
+<ul>
+  <li>Free Domain</li>
+  <li>Unlimitied leads</li>
+</ul>
+
+<%= form_tag subscriptions_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <%end%>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-label="Subscribe"
+          data-amount="<%= @amount %>"
+          data-locale="auto"></script>
+<% end %>

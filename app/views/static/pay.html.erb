@@ -1,0 +1,33 @@
+<section class="form_section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-4">
+				<form method="post">
+					<h4>Pay</h4>
+					<label>Card Number</label>
+					<div class="form-group">
+						<input type="text" name="Name" class="form-control" placeholder="1234-5678-1234-5678">
+						<a href="#" class="input_icon ccard"><%= image_tag("credit-card-icon.png", alt: "#") %></a>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="form-group">
+								<input type="text" name="Name" class="form-control" placeholder="Date (MM/YY)">
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-group">
+								<input type="text" name="Name" class="form-control" placeholder="CVC">
+							</div>
+						</div>
+					</div>
+					<div class="text-right btn_text">
+						<button type="submit" class="btn_red visible-xs"><span>PAY</span></button>
+						<button class="btn_red btn_red2"><span>Cancel</span></button>
+						<button class="btn_red hide"><span>PAY</span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

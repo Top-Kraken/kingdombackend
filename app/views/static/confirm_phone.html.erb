@@ -1,0 +1,24 @@
+<section class="form_section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-4">
+          <%= form_with(url: verify_otp_path) do |form| %>
+            <h4 class="mb-1">Confirm Your <br>Phone Number</h4>
+						<p class="mb-5">Enter in the 6 digit code sent to your phone.</p>
+            <div class="form-group">
+              <%= form.text_field :verification_code, class: 'form-control', placeholder: '. . . . . .', required: true %>
+              <span class="input_error"><%= notice %></span>
+            </div>
+            <div class="text-center">
+              <button class="btn_red"><span>SUBMIT</span></button>
+            </div>
+            <%= link_to(after_sign_up_path, class: "resend") do %>
+              <i class="fa fa-redo"></i> Send again
+            <% end %>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	</section>
+
+

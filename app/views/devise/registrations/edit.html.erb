@@ -1,0 +1,43 @@
+<section class="form_section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-7">
+        <div class="white_box">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-11">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+               <%= render "devise/shared/error_messages", resource: resource %>
+                <h4>Edit Profile</h4>
+                <div class="form-group">
+                  <%= f.text_field :full_name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder:'Name' %>
+                </div>
+                <div class="form-group">
+                  <%= f.phone_field :phone_number, autocomplete: "phone", class: 'form-control', placeholder:'Phone' %>
+                </div>
+                <div class="form-group">
+                  <%= f.password_field :password, autocomplete: "new-password" , class: 'form-control pswrd', placeholder: 'Password (10 digit)' %>
+                </div>
+                <div class="form-group">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control pswrd', placeholder:'Re-enter password' %>
+                </div>
+                <div class="form-group">
+                  <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control pswrd', placeholder: 'Current Password' %>
+                </div>
+                <label class="check grey">Send text notification
+                  <%= f.check_box :send_text_notifications, checked:'checked' %>
+                  <span class="checkmark"></span>
+                </label>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="text-right">
+                      <%= f.submit "Confirm", class: 'btn_orange mt-1' %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

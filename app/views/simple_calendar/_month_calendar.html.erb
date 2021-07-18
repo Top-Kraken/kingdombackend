@@ -1,0 +1,232 @@
+<div class="simple-calendar">
+  <div class="col-12 col-md-12">
+    <div class="row justify-content-center calendar-sec1-head">
+      <div class="col-12 col-md-3"></div>
+      <div class="col-12 col-md-7 d-flex justify-content-between align-items-center">
+        <h4><%= image_tag("back-icon.png", alt: "#", class: "visible-xs") %><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h4>
+        <div>
+          <%= link_to 'New Demo', new_demo_path, class: "c-prev-btn btn_red" %>
+          <%= link_to 'Settings', demo_settings_path, class: "c-setting-btn" %>
+          <%= link_to 'Prev', calendar.url_for_previous_view, class: "c-prev-btn btn_purple" %>
+          <%= link_to 'Next', calendar.url_for_next_view, class: "c-next-btn btn_purple" %>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center calendar-sec1">
+      <div class="col-12 col-md-3">
+        <div class="blue_box">
+          <% @next_four_days1.each do |datetime, appointment| %>
+            <% if appointment.present? %>
+              <span><%= date_translation datetime %>:</span>
+              <br>
+              <% appointment.each do |apt| %>
+                <div>
+                  <%= link_to  demo_path(apt),{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#demo-modal", class: 'btn'} do  %>
+                    Demo With <%= "#{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}"%>
+                  <%end%>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          
+          <% @next_four_days.each do |datetime, demos| %>
+            <% if demos.present? %>
+                <div class="dark_box"><div class="text"><div class="name"><%= date_translation datetime %></div>
+                <% demos.each do |demo| %>
+                    <div>
+                        <p><%= link_to "Demo with #{demo.lead.first_name} #{demo.start_datetime.strftime('%l:%M %P')}", demo_path(demo) %>
+                        <a href="<%= "/demos/#{demo.id}/edit" %>"><%= image_tag("p-icon.png", alt: "#") %></a></p>
+                    </div>
+                <% end %>
+                <div class="dropdown">
+                  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= image_tag("three_dots2.png", alt: "#") %>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div></div></div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-12 col-md-7">
+        <div class="blue_box">
+          <div class="calendar-table-data hidden-xs">
+            <table class="responsive" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <% date_range.slice(0, 7).each do |day| %>
+                    <th><%= t('date.abbr_day_names')[day.wday] %></th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <% date_range.each_slice(7) do |week| %>
+                  <tr>
+                    <% week.each do |day| %>
+                      <td>
+                        <%= day.strftime("%d") %>
+                          <p data-bs-toggle="modal" data-bs-target="#exampleModal">9 am - 9:30 am</p>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="calendar-table-data visible-xs">
+            <table class="responsive" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                  <th>Sun</th>
+                </tr>
+                <tr>
+                  <td><span class="circle-data">3</span></td>
+                  <td><span class="circle-data">4</span></td>
+                  <td><span class="circle-data">5</span></td>
+                  <td><span class="circle-data">6</span></td>
+                  <td><span class="circle-data">7</span></td>
+                  <td><span class="circle-data">8</span></td>
+                  <td><span class="circle-data">9</span></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>08:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>09:00</div>
+                    <div>
+                      <p data-bs-toggle="modal" data-bs-target="#exampleModal">09:00 am - 09:30 am</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>10:00</div>
+                    <div>
+                      <p data-bs-toggle="modal" data-bs-target="#exampleModal">10:00 am - 10:30 am</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>11:00</div>
+                    <div>
+                      <p class="h-date-data" data-bs-toggle="modal" data-bs-target="#exampleModal">11:00 am - 11:30 am</p>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>12:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>13:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>14:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>15:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>16:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>17:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>18:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="7" class="d-flex">
+                    <div>19:00</div>
+                    <div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if false %>
+    <div class="calendar-heading">
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+      <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
+          <tr>
+            <% week.each do |day| %>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                  <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+                <% else %>
+                  <% passed_block.call day, sorted_events.fetch(day, []) %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+$("#leadModal").find(".modal-content").html("<%= j render 'leads/edit' %>")
+$("#leadModal").show()
+
+window.attachClickListenerToModalCloseButton = () => {
+  $("#leadModal .btn-close").click(function (event) {
+    $("#leadModal").toggle();
+  });
+};
+
+window.attachClickListenerToModalCloseButton()

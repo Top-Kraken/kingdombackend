@@ -1,0 +1,36 @@
+.pipeline-view-page-container {
+  .tabs {
+    .pipeline-view-tab {
+      border-bottom: 2px solid black;
+    }
+  }
+
+  main {
+    overflow-x: auto;
+
+    .stages {
+      .stage {
+        min-width: 280px;
+
+        .stage-content {
+          min-height: 500px;
+          border: 2px dotted black;
+          border-radius: 8px;
+
+          .lead {
+            min-height: 100px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: rgb(206, 205, 205);
+            border: 1px solid black;
+
+            .heat {
+              border: 1px solid black;
+              border-radius: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

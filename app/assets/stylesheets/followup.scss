@@ -1,0 +1,140 @@
+iframe {
+  width: inherit;
+  height: inherit;
+}
+
+
+/* section 2 */
+.sct2 {
+  margin-top: 70px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.sct2 .video {
+  width: 700px;
+  height: 400px;
+  background-color: gray;
+  margin: 10px auto;
+}
+
+.img img {
+  width: inherit;
+}
+
+.sct2 .container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sct2 .container-card .card {
+  display: flex;
+  justify-content: center;
+  margin: 20px 5px;
+  text-align: left;
+  width: 48%;
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(143, 143, 143, 0.548);
+}
+
+.sct2 .container-card .card .img {
+  margin: 0 10px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.sct2 .container-card .card .img img {
+  height: inherit;
+  width: auto;
+}
+
+.sct2 .container-card .card .text {
+  width: 80%;
+}
+
+.sct2 .container-card .card p strong {
+  font-family: 'Geometria Extra Bold';
+  font-size: 21px;
+  line-height: 2.5;
+}
+
+/* section 4 */
+.sct4 {
+  padding: 20px;
+  text-align: center;
+}
+
+.sct4 h2 {
+  font-family: 'Geometria Bold';
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sct4 h3 {
+  font-size: 21px;
+}
+
+.sct4 p {
+  font-family: 'Geometria Heavy';
+}
+
+.sct4 ul {
+  display: block;
+  margin: 20px 10px;
+  padding: 0 10px;
+  list-style-image: url(images/icon-ok-l.png);
+  list-style-position:initial;
+  text-align: left;
+}
+
+.sct4 .btn {
+  padding: 20px 10px;
+  margin: 20px auto;
+  background-color: #008FBE;
+  width: 90%;
+  border-radius: 10px;
+  display: block;
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+
+@media (max-width: 928px) {
+  /* section 2 */
+  .sct2 {
+    padding: 20px 10px 0;
+  }
+
+  .sct2 .container-card .card {
+    width: 95%;
+  }
+}
+
+@media (max-width: 769px) {
+  .sct3 .video, .sct2 .video {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 643px) {
+  /* section 2 */
+  .sct2 .container-card .card .img {
+    margin: 0 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: lightblue;
+  }
+
+  .sct2 .video {
+    width: 300px;
+    height: 200px;
+  }
+}
