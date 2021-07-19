@@ -46,14 +46,14 @@ class TwilioClient # rubocop:todo Style/Documentation
   private
 
   def account_sid
-    Rails.application.credentials.twilio[:account_sid]
+    Rails.application.credentials[Rails.env.to_sym][:twilio][:account_sid]
   end
 
   def auth_token
-    Rails.application.credentials.twilio[:auth_token]
+    Rails.application.credentials[Rails.env.to_sym][:twilio][:auth_token]
   end
 
   def phone_number
-    Rails.application.credentials.twilio[:phone_number]
+    Rails.application.credentials[Rails.env.to_sym][:twilio][:phone_number]
   end
 end
