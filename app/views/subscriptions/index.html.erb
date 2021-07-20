@@ -1,24 +1,18 @@
-<h1 class="text-danger">Get Started</h1>
-<p>195.99 for the first month and then 175.99 every month after</p>
 
-<ul>
-  <li>Free Domain</li>
-  <li>Unlimitied leads</li>
-</ul>
-
-<%= form_tag subscriptions_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <%end%>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-label="Subscribe"
-          data-amount="<%= @amount %>"
-          data-locale="auto"></script>
-<% end %>
+<section class="form_section stripe_section">
+<article>
+  <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+  <%end%>
+</article>
+<div class="container">
+  <h4 class="get_started_text">Get Started</h4>
+  <div class="row">
+    <% Subscription.all.each do  |subscription| %>
+      <%= render partial: 'subscription', locals: {first_amount: 194.99, unit_amount: 174.99, subscription: subscription} %>
+    <% end %>
+  </div>
+</div>
+</section>

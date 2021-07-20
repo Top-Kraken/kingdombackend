@@ -2,6 +2,7 @@ class StaticController < ApplicationController
   before_action :authenticate_user!, except: [:index, :generate_report]
   before_action :authenticate_user_status, only: [:index]
   before_action :find_user, only: [:user_template]
+  skip_before_action :check_user_subscription, only: [:confirm_phone, :after_sign_up, :verify_otp, :generate_report, :user_template]
   skip_before_action :authenticate_user!, only: [:user_template]
 
   layout "landing_layout", only: [:user_template ]

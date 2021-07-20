@@ -1,10 +1,17 @@
 class LeadsController < ApplicationController
+  include Pagy::Backend
   before_action :user_authenticated?
   before_action :set_lead, only: %i[show edit update change_stage destroy]
   before_action :set_leads, only: %i[pipeline_view]
   def index
-    @current_user = User.first
-    @leads = @current_user.leads
+    # chechk the type of params for search bar and return the correct query result, check private methods
+    get_leads
+
+    respond_to do |format|
+       format.html
+       format.json { render json: { html: render_to_string(partial: 'leads/leads.html.erb') }}
+    end
+
   end
 
   # GET /lead_view
@@ -25,9 +32,7 @@ class LeadsController < ApplicationController
   end
 
   # GET /leads/1/edit
-  def edit
-    @lead = Lead.find(params[:id])
-  end
+  def edit; end
 
   # POST /leads or /leads.json
   def create
@@ -79,6 +84,12 @@ class LeadsController < ApplicationController
     @lead.update(stage: params[:lead][:stage].to_s) if params.dig(:lead, :stage)
   end
 
+  def closed_stage
+    @lead.update(stage: 4)
+    @lead.send_satge_related_notification
+    redirect_to leads_path
+  end
+
   # DELETE /leads/1 or /leads/1.json
   def destroy
     @lead.destroy
@@ -102,5 +113,18 @@ class LeadsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def lead_params
     params.require(:lead).permit(:first_name, :phone_number, :last_name, :facebook, :instagram, :linkedin)
+  end
+
+  # get the type of the input field for the searh bar and return the correct query result
+  def get_leads
+    if params[:number]
+      @pagy, @leads = pagy(current_user.leads.where(phone_number: params[:number]))
+    elsif params[:name]
+      @pagy, @leads = pagy(current_user.leads.where(first_name: params[:name]))
+    elsif params[:default]
+      @pagy, @leads = pagy(current_user.leads)
+    else
+      @pagy, @leads = pagy(current_user.leads)
+    end
   end
 end

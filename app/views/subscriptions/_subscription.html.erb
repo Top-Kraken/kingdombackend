@@ -1,0 +1,25 @@
+<div class="col-12 col-md-4 mb-4">
+  <%= form_tag subscriptions_path do %>
+    <div class="start_box">
+      <div class="img_box">
+        <%=image_tag("get-started-icon.svg", alt: "Get Started") %>
+      </div>
+      <div class="text_box">
+        <%= hidden_field_tag :subscription_id, subscription.id %>
+        <h4>$ <%= subscription.price %></h4>
+        <p>for the first month and then <br class="hidden-xs"><span><sup>$</sup> <%= subscription.second_price %></span> every month after</p>
+        <ul>
+          <li><%=image_tag("check_circle.png", alt: "Free Domain") %>Free Domain</li>
+          <li><%=image_tag("check_circle.png", alt: "Unlimited Leads") %>Unlimited Leads</li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="A month's subscription"
+      data-label="SUBSCRIBE"
+      data-amount="<%= subscription.price.to_f * 100 %>"
+      data-locale="auto">
+    </script>
+  <% end %>
+</div>

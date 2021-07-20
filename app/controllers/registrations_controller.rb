@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!, only: [:verify_otp]
+  before_action :affilite_detail, only: [:new]
 
   def confirm_phone; end
 
@@ -18,6 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       build_resource(sign_up_params)
     end
+    resource.referred_by_id = params[:referred_by_id] if params[:referred_by_id].present?
     resource.save
     yield resource if block_given?
 
@@ -122,4 +124,14 @@ class RegistrationsController < Devise::RegistrationsController
     flash[:notice] = ''
     confirm_phone_path
   end
+
+  private
+
+    def affilite_detail
+      if params[:at]
+        @referred = User.find_by(affiliate_token: params[:at])
+        number = params[:number] ? params[:number].gsub(" ", "+") : ""
+        @lead = Lead.find_by(phone_number: number,user_id: @referred.try(:id))
+      end
+    end
 end

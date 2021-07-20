@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :user_authenticated?
   before_action :find_user, only: [:update, :prospect, :contacted, :demo, :followup, :closed]
   before_action :find_lead, only: [:prospect, :contacted, :demo, :followup, :closed]
+  skip_before_action :check_user_subscription, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info ]
   skip_before_action :authenticate_user!, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info ]
 
   layout "prospect", only: [:prospect, :contacted, :demo, :followup, :closed ]

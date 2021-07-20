@@ -1,17 +1,14 @@
 class DemosController < ApplicationController
   before_action :authenticate_user!, :user_authenticated?
   before_action :set_demo, only: %i[show edit update destroy send_reminder]
+  skip_before_action :check_user_subscription, only: [:settings]
 
   # GET /demos
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
-    current_user_demos = current_user.demos.includes(:lead)
-    @demos = current_user_demos.month(start_date)
-    @next_four_days = current_user_demos.next_four_days DateTime.now
-    
     current_user_appointments = current_user.appointments.includes(:lead)
     @appointments = current_user_appointments.month(start_date)
-    @next_four_days1 = current_user_appointments.next_four_days DateTime.now
+    @next_four_days = current_user_appointments.next_four_days DateTime.now
   end
 
   # GET /demos/settings

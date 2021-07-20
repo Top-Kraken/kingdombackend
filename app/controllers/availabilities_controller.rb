@@ -1,6 +1,7 @@
 class AvailabilitiesController < ApplicationController
   before_action :authenticate_user!, :user_authenticated?
   before_action :set_availability, only: %i[show edit update destroy]
+  skip_before_action :check_user_subscription, only: [:create, :destroy]
 
   # GET /availabilities or /availabilities.json
   def index
@@ -20,6 +21,7 @@ class AvailabilitiesController < ApplicationController
 
   # POST /availabilities or /availabilities.json
   def create
+    @availabilities = current_user.availabilities
     @availability = Availability.new(availability_params)
     @availability.user = current_user
 
