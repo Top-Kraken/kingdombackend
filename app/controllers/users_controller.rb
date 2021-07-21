@@ -9,24 +9,24 @@ class UsersController < ApplicationController
 
   def prospect
     get_availability
-    redirect_to root_path unless @lead.stage == "prospecting"
+    # redirect_to root_path unless @lead.stage == "prospecting"
   end
 
   def contacted
     get_availability
-    redirect_to root_path unless @lead.stage == "contacted"
+    # redirect_to root_path unless @lead.stage == "contacted"
   end
 
   def demo
-    redirect_to root_path unless @lead.stage == "demo"
+    # redirect_to root_path unless @lead.stage == "demo"
   end
 
   def followup
-    redirect_to root_path unless @lead.stage == "followup"
+    # redirect_to root_path unless @lead.stage == "followup"
   end
 
   def closed
-    redirect_to root_path unless @lead.stage == "closing"
+    # redirect_to root_path unless @lead.stage == "closing"
   end
 
   def book_new; end

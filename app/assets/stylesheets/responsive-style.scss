@@ -50,6 +50,7 @@
 	.home_bg{
 	    background-image: image_url("home_mob_bg.png");
 	    background-position: bottom;
+		background-repeat: repeat-y;
 	}
 	.form_bg{
 	    background-image: image_url("section_mob_bg.png");

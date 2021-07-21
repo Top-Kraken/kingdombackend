@@ -14,6 +14,7 @@ class DemosController < ApplicationController
   # GET /demos/settings
   def settings
     @availabilities = current_user.availabilities
+    @lead = current_user.leads.first
   end
 
   # POST /demos/:demo_id/send_reminder
