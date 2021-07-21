@@ -5,7 +5,6 @@
       <div class="col-12 col-md-7 d-flex justify-content-between align-items-center">
         <h4><%= image_tag("back-icon.png", alt: "#", class: "visible-xs") %><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></h4>
         <div>
-          <%= link_to 'New Demo', new_demo_path, class: "c-prev-btn btn_red" %>
           <%= link_to 'Settings', demo_settings_path, class: "c-setting-btn" %>
           <%= link_to 'Prev', calendar.url_for_previous_view, class: "c-prev-btn btn_purple" %>
           <%= link_to 'Next', calendar.url_for_next_view, class: "c-next-btn btn_purple" %>
@@ -15,16 +14,23 @@
     <div class="row justify-content-center calendar-sec1">
       <div class="col-12 col-md-3">
         <div class="blue_box">
-          <% if false %>
-          <% #@next_four_days1.each do |datetime, appointment| %>
+          <% @next_four_days.each do |datetime, appointment| %>
             <% if appointment.present? %>
-              <div class="dark_box"><div class="text"><div class="name"><%= date_translation datetime %></div>
+              <span><%= date_translation datetime %>:</span>
+              <br>
               <% appointment.each do |apt| %>
                 <div>
-                  <p><%= link_to "Demo with #{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}", demo_path(apt) %>
-                  <a href="<%= "/demos/#{apt.id}/edit" %>"><%= image_tag("p-icon.png", alt: "#") %></a></p>
+                  <%= link_to  demo_path(apt),{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#demo-modal", class: 'btn'} do  %>
+                    Demo With <%= "#{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}"%>
+                  <%end%>
                 </div>
               <% end %>
+            <% end %>
+          <% end %>
+          <div class="dark_box">
+            <div class="text">
+              <div class="name">Today</div>
+              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
               <div class="dropdown">
                 <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   <%= image_tag("three_dots2.png", alt: "#") %>
@@ -34,31 +40,26 @@
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-              </div></div></div>
-            <% end %>
-          <% end %>
-
-          <% @next_four_days.each do |datetime, demos| %>
-            <% if demos.present? %>
-                <div class="dark_box"><div class="text"><div class="name"><%= date_translation datetime %></div>
-                <% demos.each do |demo| %>
-                    <div>
-                        <p><%= link_to "Demo with #{demo.lead.first_name} #{demo.start_datetime.strftime('%l:%M %P')}", demo_path(demo) %>
-                        <a href="<%= "/demos/#{demo.id}/edit" %>"><%= image_tag("p-icon.png", alt: "#") %></a></p>
-                    </div>
-                <% end %>
-                <div class="dropdown">
-                  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <%= image_tag("three_dots2.png", alt: "#") %>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </div></div></div>
-            <% end %>
-          <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="dark_box">
+            <div class="text">
+              <div class="name">Tomorrow</div>
+              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
+              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
+              <div class="dropdown">
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag("three_dots2.png", alt: "#") %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-12 col-md-7">

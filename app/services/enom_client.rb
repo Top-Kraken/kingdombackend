@@ -11,8 +11,8 @@ class EnomClient
     tld_list = ['com', 'net', 'org', 'us']
 
     params = {
-      UID: Rails.application.credentials.enom[:username],
-      PW: Rails.application.credentials.enom[:password],
+      UID: Rails.application.credentials[Rails.env.to_sym][:enom][:username],
+      PW: Rails.application.credentials[Rails.env.to_sym][:enom][:password],
       OnlyTldList: tld_list,
       COMMAND: 'GETNAMESUGGESTIONS',
       SearchTerm: search,
@@ -22,6 +22,8 @@ class EnomClient
     res = HTTP.get(url, params: params).body.to_s
     res = Hash.from_xml(res)
     puts '***'*25
+    puts params
+    puts '***'*25
     puts res
     res.dig 'interface_response', 'DomainSuggestions', 'Domain'
   end
@@ -29,8 +31,8 @@ class EnomClient
   def register_domain(domain, user)
     url = 'https://resellertest.enom.com/interface.asp'
     params = {
-      UID: Rails.application.credentials.enom[:username],
-      PW: Rails.application.credentials.enom[:password],
+      UID: Rails.application.credentials[Rails.env.to_sym][:enom][:username],
+      PW: Rails.application.credentials[Rails.env.to_sym][:enom][:password],
       SLD: domain.split('.').first,
       TLD: domain.split('.').last,
       COMMAND: 'Purchase',

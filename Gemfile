@@ -7,6 +7,7 @@ ruby '2.7.2'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+gem 'http'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -22,6 +23,7 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'pagy', '~> 4.8', '>= 4.8.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'phonelib'

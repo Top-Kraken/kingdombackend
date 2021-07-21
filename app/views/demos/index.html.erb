@@ -1,49 +1,54 @@
 <% if false %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <%= link_to 'New Demo', new_demo_path %>
+  <%= link_to 'Settings', demo_settings_path %>
+  <br>
+  <br>
 
-<%= link_to 'New Demo', new_demo_path %>
-<%= link_to 'Settings', demo_settings_path %>
-
-<br>
-<br>
-
-<div class="row">
-
-  <div class="col-2">
-    <% @next_four_days.each do |datetime, demos| %>
-      <% if demos.present? %>
-        <span><%= date_translation datetime %>:</span>
-        <br>
-        <% demos.each do |demo| %>
-          <div>
-            <%= link_to "Demo with #{demo.lead.first_name} #{demo.start_datetime.strftime('%l:%M %P')}", demo_path(demo), remote: true %>
-          </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <% @next_four_days.each do |datetime, appointment| %>
+          <% if appointment.present? %>
+            <span><%= date_translation datetime %>:</span>
+            <br>
+            <% appointment.each do |apt| %>
+              <div>
+                <%= link_to  demo_path(apt),{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#demo-modal", class: 'btn'} do  %>
+                  Demo With <%= "#{apt.lead.first_name} #{apt.start_time.strftime('%l:%M %P')}"%>
+                <%end%>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+
+      <div class="col-10">
+        <%= month_calendar(events: @appointments, attribute: :start_time) do |date, appointments| %>
+          <%= date.day %>
+          <% appointments.each do |apt| %>
+            <div>
+              <%= link_to  demo_path(apt),{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#demo-modal", class: 'btn'} do  %>
+                <%= apt.duration%>
+              <%end%>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class="col-10">
-    <%= month_calendar(events: @demos, attribute: :start_datetime) do |date, demos| %>
-      <%= date.day %>
-
-      <% demos.each do |demo| %>
-        <div>
-          <%= link_to demo.duration, demo_path(demo), remote: true %>
-        </div>
-      <% end %>
-
-    <% end %>
+  <div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-labelledby="demo-modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div id="demo-show"></div>
+    </div>
   </div>
-</div>
-
-<div id="demo-show"></div>
-<% else %>
+<% end %>
 
 <section class="main_section calendar-main-sec">
 		<div class="container">
 			<div class="row justify-content-center">
-        <%= month_calendar(events: @appointments, attribute: :start_time) do |date, demos| %>
+        <%= month_calendar(events: @appointments, attribute: :start_time) do |date, appointments| %>
           <%= date %>
         <% end %>
 			</div>
@@ -67,6 +72,3 @@
     </div>
   </div>
 </div>
-
-
-<% end  %>
