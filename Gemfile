@@ -35,6 +35,8 @@ gem 'devise'
 # rubocop
 gem 'rubocop', require: false
 
+gem 'pagy', '~> 4.8', '>= 4.8.1'
+gem 'http'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
