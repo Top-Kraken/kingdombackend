@@ -36,8 +36,7 @@ class LeadsController < ApplicationController
 
   # POST /leads or /leads.json
   def create
-    @current_user = User.first
-    @lead = @current_user.leads.create(lead_params)
+    @lead = current_user.leads.create(lead_params)
     respond_to do |format|
       if @lead.save
         format.html { redirect_to leads_url, notice: 'Lead was successfully created.' }
@@ -53,8 +52,7 @@ class LeadsController < ApplicationController
   def import
     # @current_user should be deleted after adding the functionality for user to sign-in
 
-    @current_user = User.first
-    @import = Lead.import(@current_user, params[:file])
+    @import = Lead.import(current_user, params[:file])
     @leads  = Lead.last_created
     respond_to do |format|
       if @leads
