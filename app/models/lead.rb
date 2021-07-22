@@ -166,7 +166,7 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    "#{Rails.application.credentials.base_url}/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
+    "#{request.protocol}" + "#{request.host_with_port}" + "/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
   end
 
   def self.check_pending_prospecting
