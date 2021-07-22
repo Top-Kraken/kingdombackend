@@ -166,7 +166,7 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    ENV['ROOT_URL'] + "/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
+    "#{ENV['ROOT_URL']}/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
   end
 
   def self.check_pending_prospecting
