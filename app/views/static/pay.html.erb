@@ -28,9 +28,7 @@
 					</div>
 					<div class="text-right btn_text">
 						<button type="submit" class="btn_red visible-xs"><span>PAY $<%= @amount %></span></button>
-						<%= button_to(new_user_session_path, class: "btn_red btn_red2") do %>
-							<span>Cancel</span>
-						<% end %>
+						<a href="/subscriptions" class="btn_red"><span>Cancel</span></a>
 						<button class="btn_red hide" type="submit"><span>PAY $<%= @amount %></span></button>
 					</div>
 				<% end %>
