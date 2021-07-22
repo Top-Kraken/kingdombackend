@@ -85,12 +85,21 @@ class Lead < ApplicationRecord
     end
   end
 
+  def send_lead(phone_number,message)
+    begin
+      TwilioClient.new.send_lead(self, message)
+      return true
+    rescue Exception => e
+      return true
+    end
+  end
+
   def send_demo_nofication
     send_text(phone_number,"Demo created successfuly, you will be notified with Meeting link")
   end
 
   def send_document_nofication
-    send_text(phone_number,"Document will be shared later.")
+    send_lead(phone_number,"Document will be shared later.")
   end
 
   def update_send_at
