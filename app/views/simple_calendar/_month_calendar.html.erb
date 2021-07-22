@@ -36,39 +36,6 @@
               </div>
             <% end %>
           <% end %>
-          <div class="dark_box">
-            <div class="text">
-              <div class="name">Today</div>
-              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
-              <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= image_tag("three_dots2.png", alt: "#") %>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="dark_box">
-            <div class="text">
-              <div class="name">Tomorrow</div>
-              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
-              <p>Demo with Jack <span>09:00 am</span> <a href="#"><%= image_tag("p-icon.png", alt: "#") %></a></p>
-              <div class="dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= image_tag("three_dots2.png", alt: "#") %>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="col-12 col-md-7">
@@ -88,7 +55,13 @@
                     <% week.each do |day| %>
                       <td>
                         <%= day.strftime("%d") %>
-                          <p data-bs-toggle="modal" data-bs-target="#exampleModal">9 am - 9:30 am</p>
+                          <% @next_four_days.each do |datetime, appointment| %>
+                            <% if datetime.strftime("%Y %m %d") == day.strftime("%Y %m %d") %>
+                              <% appointment.each do |apt| %>
+                                <p data-bs-toggle="modal" data-bs-target="#exampleModal"><%= apt.start_time.strftime("%k %P") %> - <%= apt.end_time.strftime("%k:%M %P") %></p>
+                              <% end %>
+                            <% end %>
+                          <% end %>
                       </td>
                     <% end %>
                   </tr>
