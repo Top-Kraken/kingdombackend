@@ -102,6 +102,10 @@
 							<input type="text" name="" value="http://nowkingdom.com/users/sign_up?at=<%= current_user.affiliate_token %>" readonly="readonly">
 						</div>
 					</div>
+					
+					<div class="form-actions text-center">
+						<button type="submit" class="btn_red"><span>Update User</span></button>
+					</div>
         <% end %>
         <%= simple_form_for Availability.new, html: { class: "row justify-content-center calendar-set-head" } do |f| %>
 
