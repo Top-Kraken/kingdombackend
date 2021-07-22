@@ -3,7 +3,7 @@
     <h1>The 13 Easiest Ways To Get Passive Income</h1>
     <h2>No One Is Talking About</h2>
     <div class="video">
-      <iframe src="https://player.vimeo.com/video/573015746" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://player.vimeo.com/video/573015746" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
     <div id="spc">
       <%= form_with(model: @lead, local: false, url: web_add_lead_path, id: 'addForm') do |form| %>
@@ -11,9 +11,10 @@
         <%= form.text_field :first_name %><br><br>
         <%= form.label :phone_number %>
         <%= form.text_field :phone_number %>
-        <%= button_to(web_add_lead_path, class: "la-set2-btn", method: :post, remote:true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) do %>
+        <%= button_to(web_add_lead_path, class: "la-set2-btn", method: :post, remote:true, data: { disable_with: 'loading...' }) do %>
           Discover Passive Income Blueprint for $0
         <% end %>
+        <h4 id="formDisplay" style="display: none; color: #fff">Check Your Text Messages</h4>
       <%end%>
     </div>
   </div>
@@ -119,3 +120,10 @@
     </div>
   </div>
 </div>
+
+<script>
+    $('#addForm button').click(function() {
+      $('#formDisplay').css('display', 'block');
+      $('#addForm').css('display', 'none');
+    });
+</script>

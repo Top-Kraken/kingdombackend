@@ -30,6 +30,8 @@ class Lead < ApplicationRecord
       new_hash = {}
       row.to_hash.each_pair do |k, v|
         new_hash.merge!({ k.downcase => v })
+        puts k
+        puts v
         next if new_hash['phone_number'].nil?
       end
       user.leads.create(new_hash)

@@ -13,17 +13,19 @@
 							</ul>
 						</div>
 					</div>
-					<form method="post" class="text-center">
-            <%= image_tag("document-icon.svg", alt: "#", class: "document") %>
+					
+					<%= form_with url: leads_import_path, class: 'text-center', local: false  do |form|%>
+						<%= image_tag("document-icon.svg", alt: "#", class: "document") %>
 						<div class="upload-btn-wrapper">
 						  	<button class="btn_purple"><span><%= image_tag("add-leads-button-icon.svg", alt: "#") %> Upload CSV</span></button>
-						  	<input type="file" name="myfile" />
+						  	<%= form.file_field :file %>
 						</div>
 						<p>The CSV should be formatted to have a <br>“name” and “number” column</p>
 						<div class="text-center mt-5">
-							<a href="/leads" class="btn_red"><span>Cancel</span></a>
+							<a href="/leads" class="btn_red btn_red2 me-2"><span>Cancel</span></a>
+							<button type="submit" class="btn_red"><span>Import</span></a>
 						</div>
-					</form>
+					<% end %>
 				</div>
 			</div>
 		</div>

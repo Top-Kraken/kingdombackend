@@ -23,7 +23,9 @@
 					</div>
 					<div class="text-right btn_text">
 						<button type="submit" class="btn_red visible-xs"><span>PAY</span></button>
-						<button class="btn_red btn_red2"><span>Cancel</span></button>
+						<%= button_to(new_user_session_path, class: "btn_red btn_red2") do %>
+							<span>Cancel</span>
+						<% end %>
 						<button class="btn_red hide"><span>PAY</span></button>
 					</div>
 				</form>
