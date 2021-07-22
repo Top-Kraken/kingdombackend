@@ -18,14 +18,11 @@ class TwilioClient # rubocop:todo Style/Documentation
   def send_lead(lead, message, file)
     puts "DDD"*25
     puts file
-    var mediaUrl = new List<Uri>() {
-      new Uri(file)
-    }
     client.api.account.messages.create(
       to: lead.phone_number,
       from: lead.user.twilio_number,
       body: message,
-      media_url: mediaUrl
+      media_url: [URI(mediaUrl)]
     )
     puts "EEE"*25
     puts file
