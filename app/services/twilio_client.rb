@@ -22,7 +22,7 @@ class TwilioClient # rubocop:todo Style/Documentation
       to: lead.phone_number,
       from: lead.user.twilio_number,
       body: message,
-      media_url: [URI(mediaUrl)]
+      media_url: [file]
     )
     puts "EEE"*25
     puts file
