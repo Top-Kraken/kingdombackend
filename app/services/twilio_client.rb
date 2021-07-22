@@ -13,6 +13,8 @@ class TwilioClient # rubocop:todo Style/Documentation
       from: phone_number,
       body: message,
     )
+    puts "BBB"*25
+    puts "#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"
   end
 
   def send_lead(lead, message)
@@ -22,6 +24,7 @@ class TwilioClient # rubocop:todo Style/Documentation
       body: message,
       mediaurl: ["#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"]
     )
+    puts "AAA"*25
     puts "#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"
   end
   
@@ -31,6 +34,8 @@ class TwilioClient # rubocop:todo Style/Documentation
       from: lead.user.twilio_number,
       body: message
     )
+    puts "CCC"*25
+    puts "#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"
   end
 
   # Method to get an twilio and give it to a user, you need to add the migration and add it to user, check all of the options https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource
