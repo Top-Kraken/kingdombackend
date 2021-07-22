@@ -1,5 +1,5 @@
 <div class="col-12 col-md-4 mb-4">
-  <%= form_tag subscriptions_path do %>
+  <%= form_with url:pay_path, method: :get do %>
     <div class="start_box">
       <div class="img_box">
         <%=image_tag("get-started-icon.svg", alt: "Get Started") %>
@@ -12,14 +12,18 @@
           <li><%=image_tag("check_circle.png", alt: "Free Domain") %>Free Domain</li>
           <li><%=image_tag("check_circle.png", alt: "Unlimited Leads") %>Unlimited Leads</li>
         </ul>
+        <input type="hidden" name="amount" value="<%= subscription.price.to_f * 100 %>" />
       </div>
     </div>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    <%= button_to(pay_path, class: "stripe-button-el") do %>
+      <span style="display: block; min-height: 30px;">SUBSCRIBE</span>
+    <% end %>
+    <!--<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
       data-description="A month's subscription"
       data-label="SUBSCRIBE"
       data-amount="<%= subscription.price.to_f * 100 %>"
       data-locale="auto">
-    </script>
+    </script>-->
   <% end %>
 </div>

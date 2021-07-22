@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   post '/book_demo', to:'users#book_demo'
   get '/book_new', to:'users#book_new'
 
-  get '/pay', to: 'static#pay'
+  get '/pay', to: 'static#pay', as: :pay
 
   # registrations
   devise_scope :user do

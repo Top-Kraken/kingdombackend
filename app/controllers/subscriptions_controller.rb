@@ -13,9 +13,19 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    exp_date = params[:date].split('/');
+    card_number = params[:number].gsub("-","");
+    token = Stripe::Token.create({
+      card: {
+        number: card_number,
+        exp_month: exp_date[0].to_i,
+        exp_year: exp_date[1].to_i,
+        cvc: params[:cvc],
+      },
+    })
     subscription = Subscription.find_by_id(params[:subscription_id])
     if subscription
-      customer = Stripe::Customer.create({email: params[:stripeEmail], source: params[:stripeToken]})
+      customer = Stripe::Customer.create({email: params[:email], source: token.id})
       Stripe::Charge.create({
         customer: customer.id,
         amount: (subscription.price.to_f * 100).to_i,
@@ -42,7 +52,7 @@ class SubscriptionsController < ApplicationController
       else
         current_user.user_subscription.update(stripe_subscription: stripe_subscription.id)
       end
-      redirect_to add_domain_path
+      # redirect_to add_domain_path
     end
   rescue Stripe::CardError => e
     flash[:error] = e.message
