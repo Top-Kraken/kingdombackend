@@ -18,7 +18,7 @@ class StaticController < ApplicationController
   end
 
   def add_lead
-    filePath = "#{request.protocol}" + "#{request.host_with_port}" + "/Deus Blueprint.pdf"
+    filePath = "#{request.protocol}" + "#{request.host_with_port}" + "/apple-touch-icon.png"
     @lead = current_user.leads.build(lead_params)
     @lead.added_from = "web_form"
     @lead.send_document_nofication(filePath)
