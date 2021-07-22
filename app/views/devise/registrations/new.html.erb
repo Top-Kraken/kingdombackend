@@ -17,13 +17,13 @@
             </div>
             <div class="form-group">
               <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password (10 digit)', class: 'form-control', required: true  %>
-              <a href="#" class="input_icon">
+              <a href="#" class="input_icon input_show_pwd" data-id="user_password">
                 <%=image_tag("lock-icon.png", alt: "Lock") %>
               </a>
             </div>
             <div class="form-group">
               <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Re-enter password', class: 'form-control pswrd', required: true  %>
-              <a href="#" class="input_icon">
+              <a href="#" class="input_icon input_show_pwd" data-id="user_password_confirmation">
                 <%=image_tag("lock-icon.png", alt: "Lock") %>
               </a>
             </div>
