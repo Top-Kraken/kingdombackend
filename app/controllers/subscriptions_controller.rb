@@ -52,7 +52,7 @@ class SubscriptionsController < ApplicationController
       else
         current_user.user_subscription.update(stripe_subscription: stripe_subscription.id)
       end
-      # redirect_to add_domain_path
+      redirect_to add_domain_path
     end
   rescue Stripe::CardError => e
     flash[:error] = e.message
