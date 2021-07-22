@@ -43,7 +43,7 @@ class Availability < ApplicationRecord
   def self.inbetween_data(availabilities)
     data = []
     add_time = float_to_time
-    (Date.tomorrow..Date.today + 7.day).each do |day|
+    (Date.tomorrow..Date.today + 4.day).each do |day|
       availabilities.where(day_of_week: day.strftime('%A')).each do |a|
         future_dates = a.collect_future_date_times
         stime = a.start_time

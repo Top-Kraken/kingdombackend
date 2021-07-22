@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get 'users/prospect'
   get 'users/contacted'
-  # users
-  resources :users, only: [:update]
   # demos
   resources :demos do
     post :send_reminder
@@ -26,6 +24,9 @@ Rails.application.routes.draw do
   get '/pipeline_view', to: 'leads#pipeline_view', as: 'pipeline_view'
   # users
   devise_for :users, controllers: { registrations: 'registrations', passwords: 'passwords' }
+  
+  # users
+  resources :users, only: [:update]
 
   get '/confirm_phone', to: 'static#confirm_phone', as: :confirm_phone
   post '/verify_otp', to: 'static#verify_otp', as: :verify_otp

@@ -13,9 +13,12 @@ class PasswordsController < Devise::PasswordsController
       rescue StandardError => e
         render plain: e and return
       end
-      render plain: 'Password reset link sent on your phone number'
+      notice = 'Password reset link sent on your phone number'
+      
+      redirect_to new_user_password_path, notice: 'Password reset link sent on your phone number'
     else
-      render plain: 'User not found!'
+      notice = 'User not found!'
+      redirect_to new_user_password_path, notice: 'User not found!'
     end
   end
 
@@ -36,5 +39,8 @@ class PasswordsController < Devise::PasswordsController
       msg = 'Password updated successfully!'
     end
     redirect_to new_user_session_path, notice: msg
+  end
+
+  def show
   end
 end

@@ -59,10 +59,10 @@
       </div>
    </div>
 </div>
-<a class="btn" href="#">
-<small style="font-weight: 200;">You Can Do Better</small><br>
-Start Now
-</a>
+<%= link_to  book_new_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#book_demo", class: 'btn'} do  %>
+  <small style="font-weight: 200;">You Can Do Better</small><br>
+  <span style="font-family: 'Geometria Heavy';">Start Now</span>
+<%end%>
 </section>
 <section class="sct3">
    <h2>It's The Entrepreners For Me...</h2>
@@ -176,10 +176,10 @@ Start Now
          </p>
       </div>
    </div>
-   <a class="btn" href="#">
-   <small style="font-weight: 200;">A Better Way To Make Bank</small><br>
-   Find Out Now
-   </a>
+   <%= link_to  book_new_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#book_demo", class: 'btn'} do  %>
+     <small style="font-weight: 200;">A Better Way To Make Bank</small><br>
+     <span style="font-family: 'Geometria Heavy';">Find Out Now</span>
+   <%end%>
    <div class="video">
       <iframe src="https://www.youtube.com/embed/xcJtL7QggTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
@@ -203,9 +203,9 @@ Start Now
 <p>or maybe you graduated a couple of years ago.</p>
 <br>
 <p><span style="font-family: 'Geometria Heavy'; font-size: 17px;">NO MATTER</span> where you are in life.</p>
-<a class="btn" href="#">
-<small style="font-weight: 200;">This Is For You</small><br>
-<span style="font-family: 'Geometria Heavy';">Find Out How</span>
-</a>
+<%= link_to  book_new_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#book_demo", class: 'btn'} do  %>
+  <small style="font-weight: 200;">This Is For You</small><br>
+  <span style="font-family: 'Geometria Heavy';">Find Out How</span>
+<%end%>
 
 <%= render 'users/booking_demo'%>

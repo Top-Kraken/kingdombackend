@@ -5,7 +5,7 @@
         <%= form_for("registration", url: search_domain_path, remote: true) do |form| %>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-          <h4>Choose or add <br>a website domain</h4>
+          <h4>Choose a new <br>website domain</h4>
           <div class="form-group">
             <%= form.text_field :search, placeholder: 'Search for a new domain', class: "form-control" %>
             <%= form.submit "", class: 'search_keywords input_icon search' %>

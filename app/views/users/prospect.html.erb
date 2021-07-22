@@ -65,10 +65,11 @@
       </div>
    </div>
 </div>
-<a class="btn" href="#">
+
+<%= link_to  book_new_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#book_demo", class: 'btn'} do  %>
 <small style="font-weight: 200;">Tired Of People Doubting You</small><br>
 Change That Now
-</a>
+<%end%>
 </section>
 <section class="sct3">
    <h2>Do you think </h2>
@@ -163,10 +164,10 @@ Change That Now
          </p>
       </div>
    </div>
-   <a class="btn" href="#">
+   <%= link_to  book_new_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#book_demo", class: 'btn'} do  %>
    <small style="font-weight: 200;">Book 10 Mins With</small><br>
    A Real Entrepreneur
-   </a>
+   <%end%>
    <h2 style="font-family: 'Geometria Bold';">
       <small class="mb-3"  style="font-weight: bold;">What If…</small><br>
       There Was A Way To Get What You Wanted

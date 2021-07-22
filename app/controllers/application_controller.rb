@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     if resource.status.eql?('inactive')
       confirm_phone_path
     else
-      root_path
+      leads_path
     end
   end
 
