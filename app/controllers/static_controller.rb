@@ -14,6 +14,7 @@ class StaticController < ApplicationController
   end
 
   def pay
+    @amount = params[:amount].to_f/100
   end
 
   def find_user
