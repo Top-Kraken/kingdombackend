@@ -44,6 +44,7 @@
               <%= f.input :domain, label: false, placeholder: "Enter your personal landing page link", wrapper: false, required: true %>
 						</div>
 					</div>
+					<% if @lead.present? %>
 					<div class="col-12">
 						<h4>Landing Page Link</h4>
 					</div>
@@ -92,7 +93,7 @@
 							<input type="text" name="" value="<%= "#{request. protocol}#{request. host_with_port}" %>/users/<%= current_user.id %>/closed/<%= @lead.phone_number %>" readonly="readonly">
 						</div>
 					</div>
-
+					<% end %>
 					<div class="col-12">
 						<h4>Personal Sign Up Link</h4>
 					</div>
