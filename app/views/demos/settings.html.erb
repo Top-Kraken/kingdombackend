@@ -25,7 +25,7 @@
 					</div>
 					<div class="col-12 p-0">
 						<div class="input-group">
-              <%= f.input :phone_number, label: false, placeholder: "Enter your personal phone number", wrapper: false, required: true %>
+              <%= f.input :phone_number, label: false, placeholder: "Enter your personal phone number", wrapper: false, required: true, readonly: true %>
 						</div>
 					</div>
 					<div class="col-12">
@@ -41,7 +41,7 @@
 					</div>
 					<div class="col-12 p-0">
 						<div class="input-group">
-              <%= f.input :domain, label: false, placeholder: "Enter your personal landing page link", wrapper: false, required: true %>
+              <%= f.input :domain, label: false, placeholder: "Enter your personal landing page link", wrapper: false, required: true, readonly: true %>
 						</div>
 					</div>
 					<% if @lead.present? %>
