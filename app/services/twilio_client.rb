@@ -11,8 +11,18 @@ class TwilioClient # rubocop:todo Style/Documentation
     client.api.account.messages.create(
       to: user,
       from: phone_number,
-      body: message
+      body: message,
     )
+  end
+
+  def send_lead(lead, message)
+    client.api.account.messages.create(
+      to: lead.phone_number,
+      from: lead.user.twilio_number,
+      body: message,
+      mediaurl: ["#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"]
+    )
+    puts "#{request. protocol}#{request. host_with_port}/Deus Blueprint.pdf"
   end
   
   def user_sms_to_lead(lead, message)
