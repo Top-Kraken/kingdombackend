@@ -24,28 +24,26 @@ class Lead < ApplicationRecord
 
   # user should be deleted after adding the functionality for user to sign-in
   def self.import(user, path)
+    leads_hash = []
     CSV.foreach(path, headers: true,
                       skip_blanks: true,
                       skip_lines: /^(?:,\s*)+$/) do |row|
       new_hash = {}
       row.to_hash.each_pair do |k, v|
         new_hash.merge!({ k.downcase => v })
-        puts k
-        puts v
         next if new_hash['phone_number'].nil?
       end
-      user.leads.create(new_hash)
-
-      p new_hash
+      lead = user.leads.create(new_hash)
+      if lead.id
+        lead = where('phone_number = ?', new_hash['phone_number']).first
+        leads_hash << lead
+      end
     end
+    leads_hash
   end
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def self.last_created
-    where('created_at >= ?', 10.minutes.ago)
   end
 
   def after_lead_create

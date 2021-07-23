@@ -1,9 +1,1 @@
-$(".notice").remove();
-
-<% @leads.each do |l| %>
-
-var1 = $('<div class="notice"><%= escape_javascript(l.first_name)%> </div>');
-var2 = $('<div class="notice"><%= escape_javascript(l.phone_number)%> </div>');
-var3 = $('<br/>')
-$("#something").append(var1, var2, var3);
-<% end %>
+$('.main_section').html("<%= j render 'new_leads', leads: @leads %>");

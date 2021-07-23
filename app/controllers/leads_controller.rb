@@ -52,12 +52,10 @@ class LeadsController < ApplicationController
   def import
     # @current_user should be deleted after adding the functionality for user to sign-in
 
-    @import = Lead.import(current_user, params[:file])
-    @leads  = Lead.last_created
+    @leads = Lead.import(current_user, params[:file])
     respond_to do |format|
       if @leads
-        format.html { redirect_to leads_url, notice: 'Lead was successfully created.' }
-        format.json { render :show, status: :created, location: @lead }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: lead.errors, status: :unprocessable_entity }
