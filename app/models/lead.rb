@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Lead < ApplicationRecord
+  include Rails.application.routes.url_helpers
   belongs_to :user
   has_many :appointments, dependent: :destroy
   has_many :demos, dependent: :destroy
@@ -164,8 +165,9 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    "#{ENV['ROOT_URL']}/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
+    "http://localhost:3000/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
   end
+  
 
   def self.check_pending_prospecting
     pipeline_waiting_hour = Rails.application.credentials.pipeline_waiting_hour
