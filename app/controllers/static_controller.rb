@@ -25,7 +25,6 @@ class StaticController < ApplicationController
     filePath = "#{request.protocol}" + "#{request.host_with_port}" + "/DeusBlueprint.pdf"
     @lead = current_user.leads.build(lead_params)
     @lead.added_from = "web_form"
-    @lead.send_document_nofication(filePath)
     respond_to do |format|
       if @lead.save
         format.html { redirect_to user_path(current_user), notice: 'Lead was successfully created.' }

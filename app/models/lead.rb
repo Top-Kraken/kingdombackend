@@ -103,7 +103,7 @@ class Lead < ApplicationRecord
 
   def send_document_nofication(filePath)
     puts "AAA"*25
-    send_lead(phone_number,"Document will be shared later.", filePath)
+    send_lead(phone_number,"Document will be shared later. http://3.84.239.72/DeusBlueprint.pdf ", filePath)
   end
 
   def update_send_at
@@ -165,7 +165,8 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    "http://localhost:3000/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
+    # "http://3.84.239.72/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
+    "http://3.84.239.72/DeusBlueprint.pdf"
   end
   
 
