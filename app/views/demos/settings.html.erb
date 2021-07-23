@@ -20,6 +20,9 @@
               <%= f.input :zoom_link, label: false, placeholder: "Enter your personal meeting zoom link", input_html: { type: 'url' }, wrapper: false, required: true %>
 						</div>
 					</div>
+					<div class="form-actions text-center">
+						<button type="submit" class="btn_red"><span>Update Zoom Link</span></button>
+					</div>
 					<div class="col-12">
 						<h4>Account Phone Number</h4>
 					</div>
@@ -101,10 +104,6 @@
 						<div class="input-group">
 							<input type="text" name="" value="http://nowkingdom.com/users/sign_up?at=<%= current_user.affiliate_token %>" readonly="readonly">
 						</div>
-					</div>
-					
-					<div class="form-actions text-center">
-						<button type="submit" class="btn_red"><span>Update User</span></button>
 					</div>
         <% end %>
         <%= simple_form_for Availability.new, html: { class: "row justify-content-center calendar-set-head" } do |f| %>
