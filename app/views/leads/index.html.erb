@@ -23,7 +23,7 @@
 							</div>
 						</div>
 						<div id="leads-container" class="bot_data">
-              <%= render 'leads' , remote: true %>
+              				<%= render 'leads' , remote: true %>
 						</div>
 					</div>
 				</div>
@@ -39,15 +39,15 @@
 						    <li><a class="dropdown-item" href="#">Sort by Name</a></li>
 						  </ul>
 						</div>
-            <div id="leads-container">
-              <%= render 'mobile_leads' , remote: true %>
-            </div>
+						<div id="leads-container">
+						<%= render 'mobile_leads' , remote: true %>
+						</div>
 					</div>
 				</div>
 				<div class="text-right">
-          <%= link_to new_lead_path, class: 'btn_red' do %>
-            <span><%= image_tag("add-leads-button-icon.svg", alt: "#") %> Add Leads</span>
-          <% end %>
+					<%= link_to new_lead_path, class: 'btn_red' do %>
+						<span><%= image_tag("add-leads-button-icon.svg", alt: "#") %> Add Leads</span>
+					<% end %>
 					<button class="btn_purple"><span>Finish</span></button>
 				</div>
 			</div>

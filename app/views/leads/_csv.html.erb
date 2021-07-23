@@ -1,0 +1,50 @@
+<% if false %>
+  <% @leads.each do |l| %>
+    <tr class="contactItem">
+      <td><%= l.first_name %></td>
+      <td><%= l.phone_number %></td>
+      <td><%= l.stage %></td>
+      <td>
+        <%= link_to "Edit", edit_lead_path(l.id), {remote: true, 'data-bs-toggle' => "modal", 'data-bs-target' => "#exampleModalToggle", class: 'btn btn-primary btn'}  %>
+      </td>
+      <td>
+        <%= link_to "Delete", lead_path(l.id), class: 'btn btn-danger btn', method: :delete %>
+        <% if l.stage == 'demo' %>
+          <span style="color: white;"><%= "#{Rails.application.credentials.base_url}/users/sign_up?at=#{l.user.affiliate_token}&number=#{l.phone_number}" %></span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+<% @leads.each do |l| %>
+  <div class="bot_row">
+    <div class="td"><%= l.first_name %></div>
+    <div class="td"><a href="#"><%= image_tag("phone-icon.svg", alt: "#") %> <%= l.phone_number %><a href="#"></a></div>
+    <div class="td">
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <%= link_to edit_lead_path(l.id), class: 'btn_tab' do %>
+            <%= image_tag("edit-button-icon.svg", alt: "#") %> Edit
+          <% end %>
+        </li>
+        <li class="list-inline-item">
+          <%= link_to lead_path(l.id), class: 'btn_tab', method: :delete do %>
+            <%= image_tag("remove-button-icon.svg", alt: "#") %> Remove
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggle" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div id="modal-content-edit">
+
+      </div>
+    </div>
+  </div>
+</div>
