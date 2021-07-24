@@ -165,7 +165,6 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    # "http://3.84.239.72/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
     "http://3.84.239.72/DeusBlueprint.pdf"
   end
   
