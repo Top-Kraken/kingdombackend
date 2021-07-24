@@ -3,7 +3,21 @@
    <iframe src="https://player.vimeo.com/video/574784053" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 </div>
 <h2 class="mt-0" style="font-weight: bold;">It's Never Too Late</h2>
-<a class="btn" href="<%= "#{request.protocol}#{request.host_with_port}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}" %>">
+
+<% 
+url = ""
+if current_user.present?
+   if current_user.user_subscription.nil?
+      url = "#{Rails.application.credentials.base_url}/subscriptions"
+   else
+      url = "#{Rails.application.credentials.base_url}/users/#{current_user.id}/change_stage/#{@lead.phone_number}"
+   end
+else
+   url = "#{Rails.application.credentials.base_url}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}"
+end
+%>
+
+<a class="btn" href="<%= url %>">
 Choose The Best Life
 </a>
 <h2 class="mt-0" style="font-weight: bold;">Which Life Do You Want?</h2>
@@ -61,7 +75,7 @@ Choose The Best Life
    </div>
 </div>
 <h3 style="font-size: 1.17rem; font-weight: bold;">Who Would You Rather Be?</h3>
-<a class="btn" href="<%= "#{request.protocol}#{request.host_with_port}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}" %>">
+<a class="btn" href="<%= url %>">
 <small style="font-weight: 200;">Choice Is Yours</small><br>
 Choose Your Lifestyle
 </a>
@@ -96,7 +110,7 @@ Choose Your Lifestyle
 <p style="text-align: left;">Keep Your Current Job<br>
    And Be Apart Of The Lifestyle Too!
 </p>
-<a class="btn" href="<%= "#{request.protocol}#{request.host_with_port}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}" %>">
+<a class="btn" href="<%= url %>">
 <small style="font-weight: 200;">Stop Waiting</small><br>
 <span style="font-family: 'Geometria Heavy';">Join Today</span>
 </a>

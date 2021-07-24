@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'users/:id/demo/:lead_number', to: 'users#demo', as: :lead_demo
   get 'users/:id/followup/:lead_number', to: 'users#followup', as: :lead_followup
   get 'users/:id/closed/:lead_number', to: 'users#closed', as: :lead_closed
+  get 'users/:id/change_stage/:lead_number', to: 'users#change_stage', as: :lead_change_stage
   post '/book_demo', to:'users#book_demo'
   get '/book_new', to:'users#book_new'
 

@@ -10,7 +10,19 @@
 <div class="img">
    <%= image_tag("demo/Photo2.jpg") %>
 </div>
-<a class="btn" href="javascript:;">
+<% 
+url = ""
+if current_user.present?
+   if current_user.user_subscription.nil?
+      url = "#{Rails.application.credentials.base_url}/subscriptions"
+   else
+      url = "#{Rails.application.credentials.base_url}/users/#{current_user.id}/change_stage/#{@lead.phone_number}"
+   end
+else
+   url = "#{Rails.application.credentials.base_url}/users/sign_up?at=#{@user.affiliate_token}&number=#{@lead.phone_number}"
+end
+%>
+<a class="btn" href="<%= url %>">
 <small style="font-weight: 200;">You're Going To Be Mad</small><br>
 At Yourself If You Miss This!
 </a>

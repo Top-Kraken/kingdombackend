@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :user_authenticated?
-  before_action :find_user, only: [:update, :prospect, :contacted, :demo, :followup, :closed]
-  before_action :find_lead, only: [:prospect, :contacted, :demo, :followup, :closed]
-  skip_before_action :check_user_subscription, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info ]
-  skip_before_action :authenticate_user!, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info ]
+  before_action :find_user, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :change_stage]
+  before_action :find_lead, only: [:prospect, :contacted, :demo, :followup, :closed, :change_stage]
+  skip_before_action :check_user_subscription, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info, :change_stage ]
+  skip_before_action :authenticate_user!, only: [:update, :prospect, :contacted, :demo, :followup, :closed, :get_availability, :book_new, :get_info, :change_stage ]
 
   layout "prospect", only: [:prospect, :contacted, :demo, :followup, :closed ]
 
@@ -27,6 +27,15 @@ class UsersController < ApplicationController
 
   def closed
     # redirect_to root_path unless @lead.stage == "closing"
+  end
+
+  def change_stage
+    if @lead.stage == "prospecting" || @lead.stage == "contacted"
+      @lead.update(stage: "demo")
+    elsif @lead.stage == "demo" || @lead.stage == "followup"
+      @lead.update(stage: "closing")
+      redirect_to lead_closed_path 
+    end
   end
 
   def book_new; end
