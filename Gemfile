@@ -68,5 +68,3 @@ gem "simple_calendar", "~> 2.4"
 
 # Rails form made easy
 gem 'simple_form'
-
-gem 'whenever'
