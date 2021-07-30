@@ -16,9 +16,9 @@
 							<option>Followup</option>
 							<option>Close</option>
 						</select>
-            <%= link_to edit_lead_path(@lead.id), class: "edit" do %>
-              <%= image_tag("edit-icon-2.svg", alt: "#") %>
-            <% end %>
+						<%= link_to edit_lead_path(@lead.id), class: "edit" do %>
+						<%= image_tag("edit-icon-2.svg", alt: "#") %>
+						<% end %>
 					</div>
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-4">
@@ -41,35 +41,36 @@
 										</select>
 									</div>
 								</div>
-                <% @leads.each do |lead| %>
-                  <div class="dark_box">
-                    <%= image_tag("profile-image-3.png", alt: "#") %>
-  									<div class="text">
-  										<div class="name">
-                        <%= lead.full_name %>
-                        <% if lead.heat == "warm" %>
-                          <span class="type yellow">WARM</span>
-                        <% elsif lead.heat == "hot" %>
-                          <span class="type red">HOT</span>
-                        <% else %>
-                          <span class="type blue">COLD</span>
-                        <% end %>
-                      </div>
-  										<a href="#" class="tele"><%= lead.phone_number %></a>
-  										<div class="dropdown">
-  										  <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          <%= image_tag("three_dots2.png", alt: "#") %>
-  										  </button>
-  										  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  										    <li><a class="dropdown-item" href="#">Action</a></li>
-  										    <li><a class="dropdown-item" href="#">Another action</a></li>
-  										    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  										  </ul>
-  										</div>
-  									</div>
-  									<span class="unread"></span>
-  								</div>
-                <% end %>
+                				<% @leads.each do |lead| %>
+                  					<div class="dark_box">
+                    					<%= image_tag("profile-image-3.png", alt: "#") %>
+  										<div class="text">
+  											<div class="name">
+                        						<%= lead.full_name %>
+                        						<% if lead.heat == "warm" %>
+                          							<span class="type yellow">WARM</span>
+                        						<% elsif lead.heat == "hot" %>
+                          							<span class="type red">HOT</span>
+                        						<% else %>
+                          							<span class="type blue">COLD</span>
+                        						<% end %>
+                      						</div>
+  											<a href="#" class="tele"><%= lead.phone_number %></a>
+  											<div class="dropdown">
+  										  		<button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          							<%= image_tag("three_dots2.png", alt: "#") %>
+  										  		</button>
+												<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+													<li><a class="dropdown-item" href="#">Action</a></li>
+													<li><a class="dropdown-item" href="#">Another action</a></li>
+													<li><a class="dropdown-item" href="#">Something else here</a></li>
+												</ul>
+											</div>
+										</div>
+										<span class="unread"></span>
+									</div>
+                				<% end %>
+								<%= pagy_nav(@pagy) %>
 								<ul class="list-inline controls">
 									<li class="list-inline-item"><a href="#"><%= image_tag("previous-button.png", alt: "#") %></a></li>
 									<li class="list-inline-item"><a href="#"><%= image_tag("next-button.png", alt: "#") %></a></li>
@@ -80,17 +81,17 @@
 							<div class="blue_box">
 								<div class="message_wrap">
 									<div class="messenger left">
-                    <%= image_tag("profile-image-2.png", alt: "#") %>
+                    					<%= image_tag("profile-image-2.png", alt: "#") %>
 										<div class="text_box">Hey Ivone, this is Peter from Harty Builders. Did you descide on which product you wanted yet?</div>
 										<span class="time">Peter on May 15th, 2021 @ 9:37 am</span>
 									</div>
 									<div class="messenger right">
-                    <%= image_tag("profile-image-3.png", alt: "#") %>
+                    					<%= image_tag("profile-image-3.png", alt: "#") %>
 										<div class="text_box">Not yet.. Still trying to figure out what I want. <br>Any recommendations?</div>
 										<span class="time">Ivone May 15th, 2021 @ 9:37 am</span>
 									</div>
 									<div class="messenger left">
-                    <%= image_tag("profile-image-2.png", alt: "#") %>
+                    					<%= image_tag("profile-image-2.png", alt: "#") %>
 										<div class="text_box">Hey Ivone, this is Peter from Harty Builders. Did you descide on which product you wanted yet?</div>
 										<span class="time">Peter on May 15th, 2021 @ 9:37 am</span>
 									</div>

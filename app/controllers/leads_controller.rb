@@ -3,6 +3,7 @@ class LeadsController < ApplicationController
   before_action :user_authenticated?
   before_action :set_lead, only: %i[show edit update change_stage destroy]
   before_action :set_leads, only: %i[pipeline_view]
+
   def index
     # chechk the type of params for search bar and return the correct query result, check private methods
     get_leads
@@ -16,8 +17,26 @@ class LeadsController < ApplicationController
 
   # GET /lead_view
   def lead_view
-    @lead = Lead.last
-    @leads = Lead.all
+    get_lead_view
+  end
+
+  def get_lead_view
+    @stage = 'prospecting'
+    @keyword = ''
+    if params[:stage]
+      @stage = params[:stage]
+    end
+    if params[:name]
+      @pagy, @leads = pagy(Lead.where(first_name: params[:name], stage: @stage), page: params[:page], items: 5)
+    else
+      @pagy, @leads = pagy(Lead.where(stage: @stage))
+    end
+    if @leads.first
+      @lead = @leads.first
+    else
+      @lead = Lead.last
+    end
+    puts @pagy
   end
 
   # GET /pipeline_view
@@ -118,6 +137,8 @@ class LeadsController < ApplicationController
       @pagy, @leads = pagy(current_user.leads.where(phone_number: params[:number]))
     elsif params[:name]
       @pagy, @leads = pagy(current_user.leads.where(first_name: params[:name]))
+    elsif params[:stage]
+      @pagy, @leads = pagy(current_user.leads.where(stage: params[:stage]))
     elsif params[:default]
       @pagy, @leads = pagy(current_user.leads)
     else

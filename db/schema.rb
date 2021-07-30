@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_162309) do
+ActiveRecord::Schema.define(version: 2021_07_24_065028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 2021_07_08_162309) do
     t.index ["user_id"], name: "index_leads_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lead_id", null: false
+    t.integer "type"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lead_id"], name: "index_messages_on_lead_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "price"
@@ -112,6 +123,8 @@ ActiveRecord::Schema.define(version: 2021_07_08_162309) do
   add_foreign_key "demos", "leads"
   add_foreign_key "demos", "users"
   add_foreign_key "leads", "users"
+  add_foreign_key "messages", "leads"
+  add_foreign_key "messages", "users"
   add_foreign_key "user_subscriptions", "subscriptions"
   add_foreign_key "user_subscriptions", "users"
 end

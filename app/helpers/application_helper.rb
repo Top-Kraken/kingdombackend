@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
   def date_translation(date)
     date = date.to_date unless date.kind_of? Date
 

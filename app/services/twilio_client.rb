@@ -16,16 +16,12 @@ class TwilioClient # rubocop:todo Style/Documentation
   end
 
   def send_lead(lead, message, file)
-    puts "DDD"*25
-    puts file
     client.api.account.messages.create(
       to: lead.phone_number,
       from: lead.user.twilio_number,
       body: message,
       media_url: [file]
     )
-    puts "EEE"*25
-    puts file
   end
   
   def user_sms_to_lead(lead, message)

@@ -88,9 +88,7 @@ class Lead < ApplicationRecord
 
   def send_lead(phone_number,message, filePath)
     begin
-      puts "BBB"*25
       TwilioClient.new.send_lead(self, message, filePath)
-      puts "CCC"*25
       return true
     rescue Exception => e
       return true
@@ -102,7 +100,6 @@ class Lead < ApplicationRecord
   end
 
   def send_document_nofication(filePath)
-    puts "AAA"*25
     send_lead(phone_number,"Document will be shared later. http://3.84.239.72/DeusBlueprint.pdf ", filePath)
   end
 
