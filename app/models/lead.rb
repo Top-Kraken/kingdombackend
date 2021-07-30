@@ -122,7 +122,7 @@ class Lead < ApplicationRecord
     return if is_send_at.present?
     if stage == "prospecting"
       if added_from == "web_form"
-        msg = " Look at these modern ways to make that much needed Passive Income #{get_stage_url} " + "Talk soon, " + "#{user.try(:full_name)}"
+        msg = " Look at these modern ways to make that much needed Passive Income #{get_doc_url} " + "Talk soon, " + "#{user.try(:full_name)}"
       else
         msg = "Hey #{first_name}, " + " What would you do if you woke up and didn’t have anything but the clothes on your back and the phone in your hand? That’s a tough one huh? Clink the link #{get_stage_url} and we’ll show how you can go from broke to whatever you can think of. " + "#{user.try(:full_name)}"
       end
@@ -155,6 +155,10 @@ class Lead < ApplicationRecord
     "\nZoom Link: #{user.zoom_link}"
   end
 
+  def get_doc_url
+    "#{Rails.application.credentials.base_url}/DeusBlueprint.pdf"
+  end
+
   def get_stage_url
     state_name_in_url = stage
     if stage === "prospecting"
@@ -162,7 +166,7 @@ class Lead < ApplicationRecord
     elsif stage === "closing"
       state_name_in_url = "closed"
     end
-    "http://3.84.239.72/DeusBlueprint.pdf"
+    "#{Rails.application.credentials.base_url}/users/#{user.try(:id)}/#{state_name_in_url}/#{phone_number}"
   end
   
 
